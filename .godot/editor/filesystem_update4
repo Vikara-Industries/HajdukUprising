@@ -1,0 +1,6 @@
+res://scenes/test_level.tscn
+res://scenes/player.tscn
+res://scripts/player.gd
+res://scenes/Gun.gd
+res://scenes/Enemy.tscn
+res://scenes/Enemy.gd

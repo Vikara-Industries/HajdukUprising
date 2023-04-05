@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5175lt6lq5g"]
+
+[ext_resource type="Texture2D" uid="uid://bgupnfoll1v3s" path="res://sprites/turk/Stand.png" id="1_div81"]
+[ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_tjswx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qduvg"]
+size = Vector2(21, 50)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_tjswx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_div81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10.5, 0)
+shape = SubResource("RectangleShape2D_qduvg")
