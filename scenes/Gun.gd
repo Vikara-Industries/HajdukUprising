@@ -1,14 +1,20 @@
-extends Marker2D
-
+extends Node2D
+signal TimerDone
 @onready var ray := $fireLine as RayCast2D
+@export var targetGroup :String
+var target :Vector2
 
 func fire():
-	
-	ray.target_position = get_global_mouse_position()
+	ray.position = position
+	ray.target_position = to_local(target)
 	
 	var hit = ray.get_collider()
-	print_debug(ray.global_position,ray.target_position)
+	
 	if(hit != null):
-		print_debug(ray.get_collider())
-		if(hit.is_in_group("Enemy")):
+		if(hit.is_in_group(targetGroup)):
 			ray.get_collider().die()
+			
+
+
+func _on_timer_timeout():
+	TimerDone.emit()

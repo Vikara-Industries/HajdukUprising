@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtu4ayjg1u5f4"]
+
+[ext_resource type="Script" path="res://scenes/Gun.gd" id="1_mjhq3"]
+
+[node name="Gun" type="Node2D"]
+position = Vector2(5, -5)
+script = ExtResource("1_mjhq3")
+
+[node name="fireLine" type="RayCast2D" parent="."]
+position = Vector2(0, 9)
+target_position = Vector2(24, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

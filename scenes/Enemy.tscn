@@ -1,18 +1,176 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5175lt6lq5g"]
+[gd_scene load_steps=25 format=3 uid="uid://c5175lt6lq5g"]
 
 [ext_resource type="Texture2D" uid="uid://bgupnfoll1v3s" path="res://sprites/turk/Stand.png" id="1_div81"]
 [ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_tjswx"]
+[ext_resource type="Texture2D" uid="uid://c8f8ao23evrbb" path="res://sprites/turk/Aim.png" id="2_1qu04"]
+[ext_resource type="Texture2D" uid="uid://bowx13vxkfl7w" path="res://sprites/turk/Death 1.png" id="3_vumo2"]
+[ext_resource type="Texture2D" uid="uid://chytudnd4wlrp" path="res://sprites/turk/Death 2.png" id="4_2307u"]
+[ext_resource type="Texture2D" uid="uid://bf70ws333n6ju" path="res://sprites/turk/Shoot 1.png" id="4_vfyhp"]
+[ext_resource type="Texture2D" uid="uid://g4vpd35tsitu" path="res://sprites/turk/Death 3.png" id="5_s1vm0"]
+[ext_resource type="Texture2D" uid="uid://00d7lqku4q1r" path="res://sprites/turk/Shoot 2.png" id="5_xvkpw"]
+[ext_resource type="Texture2D" uid="uid://cq6r7sy5muwe6" path="res://sprites/turk/Shoot 3.png" id="6_c0wmt"]
+[ext_resource type="Texture2D" uid="uid://btx6gw8avql3a" path="res://sprites/turk/Death 4.png" id="6_kqa7p"]
+[ext_resource type="Texture2D" uid="uid://dru43cflkm2na" path="res://sprites/turk/Death 5.png" id="7_4kog1"]
+[ext_resource type="Texture2D" uid="uid://1bhrbki755ek" path="res://sprites/turk/Shoot 4.png" id="7_28o1x"]
+[ext_resource type="Texture2D" uid="uid://5yvw2hdpwi0s" path="res://sprites/turk/Death 6.png" id="8_kryl2"]
+[ext_resource type="Texture2D" uid="uid://cdt3uph3sdg4p" path="res://sprites/turk/Shoot 5.png" id="8_nlf85"]
+[ext_resource type="Texture2D" uid="uid://dcdwfhqnungxa" path="res://sprites/turk/Walk 1.png" id="9_cumdb"]
+[ext_resource type="Texture2D" uid="uid://wvsakgixcel6" path="res://sprites/turk/Death 7.png" id="9_uj42b"]
+[ext_resource type="Texture2D" uid="uid://cjj7qun65agwe" path="res://sprites/turk/Walk 2.png" id="10_xgk8f"]
+[ext_resource type="Texture2D" uid="uid://c27ey277hk1yi" path="res://sprites/turk/Walk 3.png" id="11_cfkia"]
+[ext_resource type="Texture2D" uid="uid://b1potvlpbl6f0" path="res://sprites/turk/Walk 4.png" id="12_vdytk"]
+[ext_resource type="Texture2D" uid="uid://fooikk6o6anu" path="res://sprites/turk/Walk 5.png" id="13_gxurv"]
+[ext_resource type="Texture2D" uid="uid://4bu7c8ilylvv" path="res://sprites/turk/Walk 6.png" id="14_vumgp"]
+[ext_resource type="PackedScene" uid="uid://dtu4ayjg1u5f4" path="res://scenes/gun.tscn" id="15_4uadh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jca07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1qu04")
+}],
+"loop": true,
+"name": &"aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vumo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2307u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s1vm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kqa7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4kog1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kryl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uj42b")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_div81")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vfyhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xvkpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c0wmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_28o1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nlf85")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_cumdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xgk8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cfkia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vdytk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gxurv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vumgp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qduvg"]
-size = Vector2(21, 50)
+size = Vector2(47.5, 50)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_tjswx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_div81")
+sprite_frames = SubResource("SpriteFrames_jca07")
+animation = &"aim"
+autoplay = "walk"
+
+[node name="Gun" parent="Sprite2D" instance=ExtResource("15_4uadh")]
+targetGroup = "\"Player\""
+
+[node name="Vision" type="Node2D" parent="Sprite2D"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D/Vision"]
+position = Vector2(4, -13)
+target_position = Vector2(285, -85)
+collision_mask = 257
+
+[node name="RayCast2D2" type="RayCast2D" parent="Sprite2D/Vision"]
+position = Vector2(4, -13)
+target_position = Vector2(281, 137)
+collision_mask = 257
+
+[node name="RayCast2D3" type="RayCast2D" parent="Sprite2D/Vision"]
+position = Vector2(4, -13)
+target_position = Vector2(293, 88)
+collision_mask = 257
+
+[node name="RayCast2D4" type="RayCast2D" parent="Sprite2D/Vision"]
+position = Vector2(4, -13)
+target_position = Vector2(315, 52)
+collision_mask = 257
+
+[node name="RayCast2D5" type="RayCast2D" parent="Sprite2D/Vision"]
+position = Vector2(4, -13)
+target_position = Vector2(338, 15)
+collision_mask = 257
+
+[node name="RayCast2D6" type="RayCast2D" parent="Sprite2D/Vision"]
+position = Vector2(4, -13)
+target_position = Vector2(333, -25)
+collision_mask = 257
+
+[node name="RayCast2D7" type="RayCast2D" parent="Sprite2D/Vision"]
+position = Vector2(4, -13)
+target_position = Vector2(311, -58)
+collision_mask = 257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-10.5, 0)
+position = Vector2(2.25, 0)
 shape = SubResource("RectangleShape2D_qduvg")
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

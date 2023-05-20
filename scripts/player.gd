@@ -1,28 +1,45 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const fireSpeed = 2
+@export var SPEED = 300.0
+var IsHidden = false
 
 @onready var sprite := $sprite as AnimatedSprite2D
-@onready var weapon := $sprite/Gun as Marker2D
+@onready var weapon := $sprite/Gun as Node2D
 @onready var hitBox := $CollisionShape2D as CollisionShape2D
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var gunTimer := $sprite/Gun/Timer as Timer
+@onready var interactIndicator := $interactIndicator as Sprite2D
+@onready var navigation := $NavigationAgent2D as NavigationAgent2D
+
 var _animState = "idle"
 
+
+signal interact_pressed
+
+
+func try_interact():
+	if(interactIndicator.visible):
+		interact_pressed.emit()
+
+func _ready():
+	interactIndicator.visible = false
+	
+
+	
+	
+	
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
 
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("Left", "Right")
-	if direction:
-		velocity.x = direction * SPEED
-		if(direction<0):
+	var directionX = Input.get_axis("Left", "Right")
+	var directionY = Input.get_axis("Up","Down")
+	if directionX or directionY:
+		
+		velocity.y = directionY * SPEED
+		velocity.x = directionX * SPEED
+		if(directionX<0):
 			
 			sprite.scale.x = -abs(sprite.scale.x)
 			hitBox.position.x = abs(hitBox.position.x)
@@ -32,20 +49,51 @@ func _physics_process(delta):
 		_animState = "walk"
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
 		if Input.is_action_pressed("Aim"):
 			_animState = "aim"
 		else:
 			_animState = "idle"
-	
-	if Input.is_action_pressed("Down") and is_on_floor():
-		_animState = "crouch"
+	if Input.is_action_just_pressed("Interact"):
+		try_interact()
 		
 	if Input.is_action_just_pressed("Shoot"):
-		_animState = "shoot"
-		weapon.fire()
+		get_tree().call_group("Enemy","setTargetPos",global_position)
+		if gunTimer.is_stopped():
+			weapon.fire()
+			gunTimer.start()
+	
+	if IsHidden:
+		_animState = "hide"
 		
+	checkNavigation()
 	_handleAnim(_animState)
 	move_and_slide()
 
+func checkNavigation():
+	navigation.target_position = self.position + velocity/5
+	if not navigation.is_target_reachable():
+		velocity = Vector2(0,0)
 func _handleAnim(state):
-	sprite.animation = state
+	if gunTimer.is_stopped():
+		sprite.animation = state
+	else:
+		sprite.animation = "shoot"
+	
+func hideInCover():
+	IsHidden = true
+	self.set_collision_layer_value(1,0)
+	self.set_collision_mask_value(1,0)
+func comeOutOfCover():
+	IsHidden = false
+	self.set_collision_layer_value(1,1)
+	self.set_collision_mask_value(1,1)
+	
+func _on_gun_timer_done():
+	sprite.sprite_frames.set("shoot",0)
+
+
+func ShowInteract():
+	interactIndicator.visible = true
+func HideInteract():
+	interactIndicator.visible = false

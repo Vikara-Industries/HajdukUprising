@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cqu3elb6kjvod"]
+[gd_scene load_steps=35 format=3 uid="uid://cqu3elb6kjvod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1lw2h"]
 [ext_resource type="Texture2D" uid="uid://c6e124cf3t57r" path="res://sprites/hajduk/Aim.png" id="1_h7hhl"]
@@ -30,7 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://clyrbbun7oi13" path="res://sprites/hajduk/Shoot 4.png" id="23_vhcxk"]
 [ext_resource type="Texture2D" uid="uid://qdv4v0axln6f" path="res://sprites/hajduk/Shoot 5.png" id="24_mv1je"]
 [ext_resource type="Texture2D" uid="uid://d4bsleyle0jcq" path="res://sprites/hajduk/Walk 6.png" id="24_rstvc"]
-[ext_resource type="Script" path="res://scenes/Gun.gd" id="26_0tdoa"]
+[ext_resource type="PackedScene" uid="uid://dtu4ayjg1u5f4" path="res://scenes/gun.tscn" id="31_npy5m"]
+[ext_resource type="Texture2D" uid="uid://d3qhtgf37j60o" path="res://sprites/interactables/prompt.png" id="32_1pxfi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ty7n"]
 animations = [{
@@ -153,28 +154,37 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4a3r"]
-size = Vector2(14, 46)
+size = Vector2(47, 53)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_1lw2h")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(7, -8)
+zoom = Vector2(2, 2)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1, 0)
+position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_0ty7n")
 animation = &"shoot"
 autoplay = "walk"
 
-[node name="Gun" type="Marker2D" parent="sprite"]
-position = Vector2(9, -12)
-script = ExtResource("26_0tdoa")
-
-[node name="fireLine" type="RayCast2D" parent="sprite/Gun"]
-target_position = Vector2(24, 0)
+[node name="Gun" parent="sprite" instance=ExtResource("31_npy5m")]
+targetGroup = "\"Enemy\""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-12, 0)
+position = Vector2(-1.5, 1.5)
 shape = SubResource("RectangleShape2D_h4a3r")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="interactIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, -48)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("32_1pxfi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="TimerDone" from="sprite/Gun" to="." method="_on_gun_timer_done"]

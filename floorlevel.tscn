@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://chst5vpkadwwb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5132e"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fv6cn"]
+
+[node name="floorlevel" type="Node2D"]
+
+[node name="Entrance" type="Line2D" parent="."]
+points = PackedVector2Array(66, 1, 474, 1)
+
+[node name="Room" type="Line2D" parent="."]
+points = PackedVector2Array(311, 272, 701, 274)
+
+[node name="Hallway" type="Line2D" parent="."]
+points = PackedVector2Array(474, 271, 474, 1)
+
+[node name="playerMarker" type="Node2D" parent="."]
+position = Vector2(218, 2)
+
+[node name="Camera2D" type="Camera2D" parent="playerMarker"]
+position = Vector2(2, 23)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="playerMarker"]
+position = Vector2(-133, -1)
+scale = Vector2(25.5289, 27)
+mesh = SubResource("SphereMesh_5132e")
+texture = SubResource("ViewportTexture_fv6cn")
