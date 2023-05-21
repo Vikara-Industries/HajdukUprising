@@ -1,3 +1,6 @@
+Marker2D
+ReferenceRect
+Polygon2D
 Path2D
 WorldEnvironment
 NavigationAgent2D
@@ -19,4 +22,3 @@ AnimatedSprite2D
 Timer
 RayCast2D
 CharacterBody2D
-Marker2D

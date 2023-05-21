@@ -2,8 +2,13 @@ extends CharacterBody2D
 
 
 @export var SPEED = 300.0
+@export var Left:Marker2D
+@export var Right:Marker2D
+@export var Up:Marker2D
+@export var Down:Marker2D
 var IsHidden = false
 
+@onready var camera := $Camera2D as Camera2D
 @onready var sprite := $sprite as AnimatedSprite2D
 @onready var weapon := $sprite/Gun as Node2D
 @onready var hitBox := $CollisionShape2D as CollisionShape2D
@@ -23,8 +28,9 @@ func try_interact():
 
 func _ready():
 	interactIndicator.visible = false
-	
-
+	for interactable in get_tree().get_nodes_in_group("Interactable"):
+		interactable.PlayerEnteredInteract.connect(ShowInteract)
+		interactable.PlayerLeftInteract.connect(HideInteract)
 	
 	
 	
@@ -97,3 +103,4 @@ func ShowInteract():
 	interactIndicator.visible = true
 func HideInteract():
 	interactIndicator.visible = false
+

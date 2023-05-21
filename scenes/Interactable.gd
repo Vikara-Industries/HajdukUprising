@@ -2,7 +2,11 @@ extends Area2D
 class_name Interactable
 signal PlayerEnteredInteract
 signal PlayerLeftInteract
+var player
 
+func _ready():
+	player = get_tree().get_first_node_in_group("Player")
+	player.interact_pressed.connect(_on_player_interact_pressed)
 func _on_player_interact_pressed():
 	if isPlayerInGroup(get_overlapping_bodies()):
 		

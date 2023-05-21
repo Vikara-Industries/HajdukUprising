@@ -1,8 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://cqu3elb6kjvod"]
+[gd_scene load_steps=36 format=3 uid="uid://cqu3elb6kjvod"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1lw2h"]
 [ext_resource type="Texture2D" uid="uid://c6e124cf3t57r" path="res://sprites/hajduk/Aim.png" id="1_h7hhl"]
 [ext_resource type="Texture2D" uid="uid://cissrjm36oj7n" path="res://sprites/hajduk/Crouch.png" id="2_qdihl"]
+[ext_resource type="Script" path="res://scenes/camControll.gd" id="2_wykis"]
 [ext_resource type="Texture2D" uid="uid://dwvjdctqwounc" path="res://sprites/hajduk/Death 1.png" id="3_qrvbj"]
 [ext_resource type="Texture2D" uid="uid://taomoaj0dlgc" path="res://sprites/hajduk/Death 2.png" id="4_y1p07"]
 [ext_resource type="Texture2D" uid="uid://couxl7s25lejb" path="res://sprites/hajduk/Death 3.png" id="5_r7ieg"]
@@ -163,7 +164,8 @@ script = ExtResource("1_1lw2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7, -8)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
+script = ExtResource("2_wykis")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

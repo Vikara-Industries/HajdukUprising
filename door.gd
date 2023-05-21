@@ -5,6 +5,7 @@ extends Interactable
 
 func _ready():
 	Sprite.texture = texture
+	
 func _on_body_entered(body):
 	if isPlayerInGroup(get_overlapping_bodies()):
 		emit_signal("PlayerEnteredInteract")

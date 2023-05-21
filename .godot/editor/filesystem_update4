@@ -8,3 +8,6 @@ res://hidehole.tscn
 res://scenes/test_level.tscn
 res://door.tscn
 res://scenes/Enemy.gd
+res://door.gd
+res://scenes/Interactable.gd
+res://scenes/camControll.gd

@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://desvhhfrlxp3b"]
+[gd_scene load_steps=4 format=3 uid="uid://desvhhfrlxp3b"]
 
 [ext_resource type="Script" path="res://door.gd" id="1_p020t"]
+[ext_resource type="Texture2D" uid="uid://khjpbhekvt4l" path="res://sprites/interactables/Portal.png" id="2_jnv6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvk1e"]
 size = Vector2(37, 44)
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" groups=["Interactable"]]
 z_index = 1
 script = ExtResource("1_p020t")
+texture = ExtResource("2_jnv6t")
 
 [node name="Portal" type="Sprite2D" parent="."]
-position = Vector2(409, -129)
+position = Vector2(2, -2)
 scale = Vector2(0.58642, 0.581818)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(409.5, -103)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_gvk1e")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
