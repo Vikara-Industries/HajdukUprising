@@ -1,38 +1,40 @@
 2a60927148abd1d33b818b535e306557
-::res://::1684313105
-door.gd::GDScript::-1::1683761061::0::1::::<>Interactable<>::
-door.tscn::PackedScene::7478464158785435965::1684091220::0::1::::<><>::res://door.gd
+::res://::1684650962
+door.gd::GDScript::-1::1684640042::0::1::::<>Interactable<>::
+door.tscn::PackedScene::7478464158785435965::1684650142::0::1::::<><>::res://door.gd<>uid://khjpbhekvt4l
 export_presets.cfg::TextFile::-1::1683137097::0::1::::<><>::
-floorlevel.tscn::PackedScene::5302530395722132061::1684091220::0::1::::<><>::
-hidehole.tscn::PackedScene::4938639748080457048::1684091220::0::1::::<><>::res://scenes/HidingSpot.gd
+floorlevel.tscn::PackedScene::5302530395722132061::1684410795::0::1::::<><>::
+hidehole.tscn::PackedScene::4938639748080457048::1684410796::0::1::::<><>::res://scenes/HidingSpot.gd
 icon.svg::CompressedTexture2D::1700597756950417572::1680718894::1680718901::1::::<><>::
-::res://addons/::1683138497
-::res://addons/godot-git-plugin/::1683138497
+::res://addons/::1684650692
+::res://addons/godot-git-plugin/::1684650692
 git_plugin.gdextension::GDExtension::-1::1683138497::0::1::::<><>::
 plugin.cfg::TextFile::-1::1683138497::0::1::::<><>::
 THIRDPARTY.md::TextFile::-1::1683138497::0::1::::<><>::
-::res://addons/godot-git-plugin/linux/::1683138497
-::res://addons/godot-git-plugin/macos/::1683138497
-::res://addons/godot-git-plugin/win64/::1683138497
-::res://scenes/::1684091220
+::res://addons/godot-git-plugin/linux/::1684650692
+::res://addons/godot-git-plugin/macos/::1684650692
+::res://addons/godot-git-plugin/win64/::1684650692
+::res://scenes/::1684650692
+camControll.gd::GDScript::-1::1684649435::0::1::::<>Camera2D<>::
 cameraController.gd::GDScript::-1::1681067768::0::1::::<>Node<>::
 Door.gd::GDScript::-1::1683754668::0::1::::Interactable<>Area2D<>::
-Enemy.gd::GDScript::-1::1683763146::0::1::::<>CharacterBody2D<>::
-Enemy.tscn::PackedScene::203946400713247018::1684091220::0::1::::<><>::uid://bgupnfoll1v3s<>res://scenes/Enemy.gd<>uid://c8f8ao23evrbb<>uid://bowx13vxkfl7w<>uid://chytudnd4wlrp<>uid://bf70ws333n6ju<>uid://g4vpd35tsitu<>uid://00d7lqku4q1r<>uid://cq6r7sy5muwe6<>uid://btx6gw8avql3a<>uid://dru43cflkm2na<>uid://1bhrbki755ek<>uid://5yvw2hdpwi0s<>uid://cdt3uph3sdg4p<>uid://dcdwfhqnungxa<>uid://wvsakgixcel6<>uid://cjj7qun65agwe<>uid://c27ey277hk1yi<>uid://b1potvlpbl6f0<>uid://fooikk6o6anu<>uid://4bu7c8ilylvv<>uid://dtu4ayjg1u5f4
+Enemy.gd::GDScript::-1::1684517126::0::1::::<>CharacterBody2D<>::
+Enemy.tscn::PackedScene::203946400713247018::1684650142::0::1::::<><>::uid://bgupnfoll1v3s<>res://scenes/Enemy.gd<>uid://c8f8ao23evrbb<>uid://bowx13vxkfl7w<>uid://chytudnd4wlrp<>uid://bf70ws333n6ju<>uid://g4vpd35tsitu<>uid://00d7lqku4q1r<>uid://cq6r7sy5muwe6<>uid://btx6gw8avql3a<>uid://dru43cflkm2na<>uid://1bhrbki755ek<>uid://5yvw2hdpwi0s<>uid://cdt3uph3sdg4p<>uid://dcdwfhqnungxa<>uid://wvsakgixcel6<>uid://cjj7qun65agwe<>uid://c27ey277hk1yi<>uid://b1potvlpbl6f0<>uid://fooikk6o6anu<>uid://4bu7c8ilylvv<>uid://dtu4ayjg1u5f4
 Gun.gd::GDScript::-1::1683762031::0::1::::<>Node2D<>::
-gun.tscn::PackedScene::8535899702845162879::1684091220::0::1::::<><>::res://scenes/Gun.gd
+gun.tscn::PackedScene::8535899702845162879::1684650142::0::1::::<><>::res://scenes/Gun.gd
 HidingSpot.gd::GDScript::-1::1683240565::0::1::::<>Area2D<>::
-Interactable.gd::GDScript::-1::1683759177::0::1::::Interactable<>Area2D<>::
-player.tscn::PackedScene::5938858220372892347::1684091220::0::1::::<><>::res://scripts/player.gd<>uid://c6e124cf3t57r<>uid://cissrjm36oj7n<>uid://dwvjdctqwounc<>uid://taomoaj0dlgc<>uid://couxl7s25lejb<>uid://32ts8u0l6xoa<>uid://8uxlf6k3odo6<>uid://d17v3tw57ey47<>uid://cu0jos1indl85<>uid://cp4j8cdb3s6wo<>uid://dghgn3ujdvxg8<>uid://dadvr6447sgjb<>uid://bl7ur1aceqkpd<>uid://dy4svqonny1oy<>uid://bix2sv71hp0eg<>uid://ietror15k7r5<>uid://dlwf5g4yeekip<>uid://b21xe57wtg6bm<>uid://cq0s8qcplfuec<>uid://dh1b2hr10fekv<>uid://b0sog548pwgtw<>uid://73fs8m6hveth<>uid://kcpqyvbrwv63<>uid://cgqvudgbm0u7g<>uid://bclpkgleohij<>uid://dpd04b5el5wl3<>uid://clyrbbun7oi13<>uid://qdv4v0axln6f<>uid://d4bsleyle0jcq<>uid://dtu4ayjg1u5f4<>uid://d3qhtgf37j60o
-test_level.tscn::PackedScene::1208256945475985853::1684091220::0::1::::<><>::uid://cqu3elb6kjvod<>uid://dt2h237vc6ofd<>uid://c5175lt6lq5g<>uid://khjpbhekvt4l<>uid://desvhhfrlxp3b<>uid://dj801it7x0xsy
-::res://scripts/::1683759118
-player.gd::GDScript::-1::1683759118::0::1::::<>CharacterBody2D<>::
-::res://sprites/::1680718997
+Interactable.gd::GDScript::-1::1684640401::0::1::::Interactable<>Area2D<>::
+player.tscn::PackedScene::5938858220372892347::1684650142::0::1::::<><>::res://scripts/player.gd<>uid://c6e124cf3t57r<>uid://cissrjm36oj7n<>res://scenes/camControll.gd<>uid://dwvjdctqwounc<>uid://taomoaj0dlgc<>uid://couxl7s25lejb<>uid://32ts8u0l6xoa<>uid://8uxlf6k3odo6<>uid://d17v3tw57ey47<>uid://cu0jos1indl85<>uid://cp4j8cdb3s6wo<>uid://dghgn3ujdvxg8<>uid://dadvr6447sgjb<>uid://bl7ur1aceqkpd<>uid://dy4svqonny1oy<>uid://bix2sv71hp0eg<>uid://ietror15k7r5<>uid://dlwf5g4yeekip<>uid://b21xe57wtg6bm<>uid://cq0s8qcplfuec<>uid://dh1b2hr10fekv<>uid://b0sog548pwgtw<>uid://73fs8m6hveth<>uid://kcpqyvbrwv63<>uid://cgqvudgbm0u7g<>uid://bclpkgleohij<>uid://dpd04b5el5wl3<>uid://clyrbbun7oi13<>uid://qdv4v0axln6f<>uid://d4bsleyle0jcq<>uid://dtu4ayjg1u5f4<>uid://d3qhtgf37j60o
+target.gd::GDScript::-1::1684411154::0::1::::<>WorldEnvironment<>::
+test_level.tscn::PackedScene::1208256945475985853::1684650162::0::1::::<><>::uid://cqu3elb6kjvod<>uid://dt2h237vc6ofd<>uid://desvhhfrlxp3b
+::res://scripts/::1684650692
+player.gd::GDScript::-1::1684643032::0::1::::<>CharacterBody2D<>::
+::res://sprites/::1684650693
 invis.png::CompressedTexture2D::2506773048608474631::1641607923::1680718997::1::::<><>::
-::res://sprites/bg/::1684091220
+::res://sprites/bg/::1684650692
 Full Level.png::CompressedTexture2D::3370217883171850061::1641510510::1680718997::1::::<><>::
-new_tile_set.tres::TileSet::8549063035991926557::1684091220::0::1::::<><>::uid://boas84sk4w2e0
-::res://sprites/hajduk/::1680718998
+new_tile_set.tres::TileSet::8549063035991926557::1684314386::0::1::::<><>::uid://boas84sk4w2e0
+::res://sprites/hajduk/::1684650693
 Aim.png::CompressedTexture2D::6958581415960945473::1641655260::1680718997::1::::<><>::
 Crouch.png::CompressedTexture2D::5372634672991701073::1641668808::1680718997::1::::<><>::
 Death 1.png::CompressedTexture2D::8747320489422807964::1641668808::1680718997::1::::<><>::
@@ -62,27 +64,27 @@ Walk 3.png::CompressedTexture2D::706957812552758062::1641655260::1680718997::1::
 Walk 4.png::CompressedTexture2D::75012807983178053::1641655260::1680718997::1::::<><>::
 Walk 5.png::CompressedTexture2D::8219857650819500810::1641655260::1680718997::1::::<><>::
 Walk 6.png::CompressedTexture2D::9197915691613886944::1641655260::1680718997::1::::<><>::
-::res://sprites/interactables/::1683760893
+::res://sprites/interactables/::1684650693
 doorDefult.tres::CompressedTexture2DArray::167724757314900334::1683760893::0::1::::<><>::
 Hide.png::CompressedTexture2D::6524330137990246240::1641552766::1680718997::1::::<><>::
 Portal.png::CompressedTexture2D::716912384035148345::1641608750::1680718997::1::::<><>::
 PortalFrame.png::CompressedTexture2D::7860650916190020304::1683754257::1683754257::1::::<><>::
 prompt.png::CompressedTexture2D::9158038990222192612::1641552835::1680718997::1::::<><>::
-::res://sprites/interactables/Ammo/::1680718997
+::res://sprites/interactables/Ammo/::1684650693
 Position 1.png::CompressedTexture2D::6558871063860377917::1641487205::1680718997::1::::<><>::
 Position 2.png::CompressedTexture2D::915554945322814774::1641487205::1680718997::1::::<><>::
 Position 3.png::CompressedTexture2D::1212065961614847820::1641487205::1680718997::1::::<><>::
 Position 4.png::CompressedTexture2D::8857703706201324994::1641487205::1680718997::1::::<><>::
 Position 5.png::CompressedTexture2D::801940925401591234::1641487205::1680718997::1::::<><>::
 Position 6.png::CompressedTexture2D::2892834486620850817::1641487205::1680718997::1::::<><>::
-::res://sprites/interactables/Health/::1680718997
+::res://sprites/interactables/Health/::1684650693
 Position 1.png::CompressedTexture2D::1984734779673118563::1641487205::1680718997::1::::<><>::
 Position 2.png::CompressedTexture2D::6028220960419981734::1641487205::1680718997::1::::<><>::
 Position 3.png::CompressedTexture2D::2657344425278363089::1641487205::1680718997::1::::<><>::
 Position 4.png::CompressedTexture2D::5129063291841870000::1641487205::1680718997::1::::<><>::
 Position 5.png::CompressedTexture2D::5030240402391840255::1641487205::1680718997::1::::<><>::
 Position 6.png::CompressedTexture2D::7011972027384345505::1641487205::1680718997::1::::<><>::
-::res://sprites/turk/::1680718997
+::res://sprites/turk/::1684650693
 Aim.png::CompressedTexture2D::7101399535287866511::1641487205::1680718997::1::::<><>::
 Death 1.png::CompressedTexture2D::3415925230843310698::1641668808::1680718997::1::::<><>::
 Death 2.png::CompressedTexture2D::5314897855518970013::1641668808::1680718997::1::::<><>::

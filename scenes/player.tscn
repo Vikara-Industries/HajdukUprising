@@ -162,7 +162,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_1lw2h")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 position = Vector2(7, -8)
 zoom = Vector2(3, 3)
 script = ExtResource("2_wykis")

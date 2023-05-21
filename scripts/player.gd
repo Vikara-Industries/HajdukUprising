@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var Down:Marker2D
 var IsHidden = false
 
-@onready var camera := $Camera2D as Camera2D
+@onready var camera := $Camera as Camera2D
 @onready var sprite := $sprite as AnimatedSprite2D
 @onready var weapon := $sprite/Gun as Node2D
 @onready var hitBox := $CollisionShape2D as CollisionShape2D
@@ -34,7 +34,7 @@ func _ready():
 	
 	
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 
 
 	# Get the input direction and handle the movement/deceleration.
