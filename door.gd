@@ -29,7 +29,7 @@ func interact():
 		player.camera.Right = targetDoor.get_parent().find_child("Right")
 		player.camera.Up = targetDoor.get_parent().find_child("Top")
 		player.camera.Down = targetDoor.get_parent().find_child("Bottom")
-		print_debug(targetDoor.get_parent().find_child("Left").position)
+		
 		
 		player.camera.setLimits()
 		player.camera.setZoom()

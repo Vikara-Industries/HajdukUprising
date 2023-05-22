@@ -64,7 +64,7 @@ func _physics_process(_delta):
 		try_interact()
 		
 	if Input.is_action_just_pressed("Shoot"):
-		get_tree().call_group("Enemy","setTargetPos",global_position)
+		makeSound()
 		if gunTimer.is_stopped():
 			weapon.fire()
 			gunTimer.start()
@@ -98,9 +98,14 @@ func comeOutOfCover():
 func _on_gun_timer_done():
 	sprite.sprite_frames.set("shoot",0)
 
-
 func ShowInteract():
 	interactIndicator.visible = true
 func HideInteract():
 	interactIndicator.visible = false
 
+func makeSound():
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		print_debug(enemy.get_global_position())
+		var sound = load("res://soundEntety.tscn").instantiate()
+		add_child(sound)
+		sound.setTargetPos(enemy.get_global_position())

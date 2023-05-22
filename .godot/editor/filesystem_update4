@@ -8,3 +8,6 @@ res://scenes/camControll.gd
 res://door.gd
 res://scripts/player.gd
 res://scenes/Interactable.gd
+res://scenes/Enemy.gd
+res://soundEntety.tscn
+res://soundEntety.gd

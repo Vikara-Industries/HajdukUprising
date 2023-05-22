@@ -36,9 +36,10 @@ func setTargetPos(pos:Vector2):
 	
 	
 func patrol():
-	if(navigation.distance_to_target()<10):
-		navigation.set_target_position(getNextPatrolPoint())
-	setTargetPos(defaultPath.curve.get_baked_points()[patrolPointIndex]) 
+	if(defaultPath):
+		if(navigation.distance_to_target()<10):
+			navigation.set_target_position(getNextPatrolPoint())
+		setTargetPos(defaultPath.curve.get_baked_points()[patrolPointIndex]) 
 	
 func getNextPatrolPoint():
 	patrolPointIndex += 1
