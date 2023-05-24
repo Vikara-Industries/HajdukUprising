@@ -7,6 +7,9 @@ var patrolPointIndex = 0
 
 var dead = false
 var distracted = false
+var seesPlayer = false
+var shooting = false
+
 @onready var sprite := $Sprite2D as AnimatedSprite2D
 @onready var Vision := $Sprite2D/Vision as Node2D
 @onready var DeathTimer := $DeathTimer as Timer
@@ -15,20 +18,35 @@ var distracted = false
 
 func _start():
 	navigation.set_target_position(global_position)
+
 func _physics_process(delta):
 	if not dead:
-		for sightLine in sightLines:
-			var collider = sightLine.get_collider()
-			if(collider != null and collider.is_in_group("Player") and not get_node('../Player').IsHidden):
-				velocity.x = 0
-				sprite.animation = "aim"
 		
+		lookForPlayer()
 		velocity = (navigation.get_next_path_position()-global_position).normalized()*Speed
 		if navigation.distance_to_target() < 9:
 			targetReached()
 		if not distracted:
 			patrol()
+		handleAnimation()
 		move_and_slide()
+	
+func handleAnimation():
+	if shooting:
+		sprite.animation = "shoot"
+	elif abs(velocity.x) > 0.1 or abs(velocity.y) > 0.1:
+		sprite.animation = "walk"
+	elif seesPlayer:
+		sprite.animation = "aim"
+	else:
+		sprite.animation = "idle"
+func lookForPlayer():
+	for sightLine in sightLines:
+			var collider = sightLine.get_collider()
+			if(collider != null and collider.is_in_group("Player") and not get_node('../Player').IsHidden):
+				seesPlayer = true
+				return
+	return
 	
 func setTargetPos(pos:Vector2):
 	distracted = true
