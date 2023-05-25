@@ -10,7 +10,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	global_position = navigation.get_next_path_position()
-	print_debug(global_position)
+	
 	for body in get_overlapping_bodies():
 		
 		if body.is_in_group("Enemy"):

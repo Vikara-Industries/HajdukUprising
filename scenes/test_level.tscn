@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rhj2ytbrvr4h"]
+[gd_scene load_steps=9 format=3 uid="uid://rhj2ytbrvr4h"]
 
 [ext_resource type="PackedScene" uid="uid://cqu3elb6kjvod" path="res://scenes/player.tscn" id="1_6mdqb"]
 [ext_resource type="TileSet" uid="uid://dt2h237vc6ofd" path="res://sprites/bg/new_tile_set.tres" id="2_qief7"]
@@ -11,16 +11,11 @@
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qqr7f"]
 
 [sub_resource type="Curve2D" id="Curve2D_87rmt"]
+bake_interval = 512.0
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 318, -68, 0, 0, 0, 0, 484, -65)
 }
 point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_7od1p"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 479, 344, 0, 0, 0, 0, 520, 486, 0, 0, 0, 0, 906, 475, 0, 0, 0, 0, 976, 458)
-}
-point_count = 4
 
 [node name="TestLevel" type="Node2D"]
 
@@ -127,10 +122,3 @@ Down = NodePath("../room1/Bottom")
 
 [node name="Path2D" type="Path2D" parent="WorldEnvironment"]
 curve = SubResource("Curve2D_87rmt")
-
-[node name="Enemy" parent="WorldEnvironment" node_paths=PackedStringArray("defaultPath") instance=ExtResource("5_3d5c7")]
-position = Vector2(481, 264)
-defaultPath = NodePath("../Path2D2")
-
-[node name="Path2D2" type="Path2D" parent="WorldEnvironment"]
-curve = SubResource("Curve2D_7od1p")

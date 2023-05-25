@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c5175lt6lq5g"]
+[gd_scene load_steps=26 format=3 uid="uid://c5175lt6lq5g"]
 
 [ext_resource type="Texture2D" uid="uid://bgupnfoll1v3s" path="res://sprites/turk/Stand.png" id="1_div81"]
 [ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_tjswx"]
@@ -111,6 +111,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="QuadMesh" id="QuadMesh_iu3l8"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qduvg"]
 size = Vector2(47.5, 50)
 
@@ -162,6 +164,11 @@ collision_mask = 257
 position = Vector2(4, -13)
 target_position = Vector2(311, -58)
 collision_mask = 257
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Sprite2D"]
+position = Vector2(52, -12)
+scale = Vector2(65.5, 16.5)
+mesh = SubResource("QuadMesh_iu3l8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.25, 0)

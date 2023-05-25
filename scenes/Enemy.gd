@@ -34,10 +34,10 @@ func _physics_process(delta):
 func handleAnimation():
 	if shooting:
 		sprite.animation = "shoot"
-	elif abs(velocity.x) > 0.1 or abs(velocity.y) > 0.1:
+	elif velocity.length() > 0.01:
 		sprite.animation = "walk"
-	elif seesPlayer:
-		sprite.animation = "aim"
+	#elif seesPlayer:
+	#	sprite.animation = "aim"
 	else:
 		sprite.animation = "idle"
 func lookForPlayer():
@@ -45,7 +45,11 @@ func lookForPlayer():
 			var collider = sightLine.get_collider()
 			if(collider != null and collider.is_in_group("Player") and not get_node('../Player').IsHidden):
 				seesPlayer = true
+				distracted = true
 				return
+	
+	distracted = false
+	seesPlayer = false
 	return
 	
 func setTargetPos(pos:Vector2):

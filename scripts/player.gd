@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var Right:Marker2D
 @export var Up:Marker2D
 @export var Down:Marker2D
-var IsHidden = false
+@export var IsHidden = false
 
 @onready var camera := $Camera as Camera2D
 @onready var sprite := $sprite as AnimatedSprite2D
@@ -105,7 +105,7 @@ func HideInteract():
 
 func makeSound():
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
-		print_debug(enemy.get_global_position())
+		
 		var sound = load("res://soundEntety.tscn").instantiate()
 		add_child(sound)
 		sound.setTargetPos(enemy.get_global_position())

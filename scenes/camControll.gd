@@ -1,5 +1,5 @@
 extends Camera2D
-
+var minZoom = 2
 @onready var Up := get_parent().Up as Marker2D
 @onready var Down := get_parent().Down as Marker2D
 @onready var Left := get_parent().Left as Marker2D
@@ -9,16 +9,24 @@ func _ready():
 	setZoom()
 
 func setZoom():
-	#trial and error shows that 100px distance fits a zoom of ~6
+	#trial and error shows that 100px distance fits a zoom of ~6.5;
+	#when distance doubles,zoom halves
+	
 	var axis = getShortAxis()
-	set_zoom(Vector2((1/(axis/100))*6.5,(1/(axis/100))*6.5))
+	var axisZoom = 1/(axis/100)*6.5
+	var finalZoom = max(minZoom,axisZoom)
+	set_zoom(Vector2(finalZoom,finalZoom))
 	
 func getShortAxis():
+	var shorterAxis
 	var vertical = Up.position.y - Down.position.y
 	var horizontal = Left.position.x - Right.position.x
 	if abs(vertical) > abs(horizontal):
-		return abs(horizontal)
-	return abs(vertical)
+		shorterAxis = abs(horizontal)
+	else:
+		shorterAxis = abs(vertical)
+	
+	return shorterAxis
 	
 func setLimits():
 	set_limit(SIDE_TOP,Up.position.y)
