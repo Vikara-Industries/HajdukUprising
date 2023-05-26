@@ -23,10 +23,11 @@ func _physics_process(delta):
 	if not dead:
 		
 		lookForPlayer()
-		velocity = (navigation.get_next_path_position()-global_position).normalized()*Speed
+		if not seesPlayer:
+			velocity = (navigation.get_next_path_position()-global_position).normalized()*Speed
 		if navigation.distance_to_target() < 9:
 			targetReached()
-		if not distracted:
+		if not distracted or seesPlayer:
 			patrol()
 		handleAnimation()
 		move_and_slide()
@@ -36,8 +37,8 @@ func handleAnimation():
 		sprite.animation = "shoot"
 	elif velocity.length() > 0.01:
 		sprite.animation = "walk"
-	#elif seesPlayer:
-	#	sprite.animation = "aim"
+	elif seesPlayer:
+		sprite.animation = "aim"
 	else:
 		sprite.animation = "idle"
 func lookForPlayer():
@@ -45,11 +46,10 @@ func lookForPlayer():
 			var collider = sightLine.get_collider()
 			if(collider != null and collider.is_in_group("Player") and not get_node('../Player').IsHidden):
 				seesPlayer = true
-				distracted = true
+				
 				return
-	
-	distracted = false
 	seesPlayer = false
+	
 	return
 	
 func setTargetPos(pos:Vector2):
