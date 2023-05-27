@@ -105,7 +105,7 @@ func HideInteract():
 
 func makeSound():
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
-		
 		var sound = load("res://soundEntety.tscn").instantiate()
 		add_child(sound)
 		sound.setTargetPos(enemy.get_global_position())
+		

@@ -1,8 +1,9 @@
-res://scenes/test_level.tscn
+res://soundEntety.tscn
 res://sprites/bg/new_tile_set.tres
+res://soundEntety.gd
 res://scenes/Enemy.tscn
 res://scenes/gun.tscn
 res://scenes/player.tscn
+res://scenes/test_level.tscn
 res://door.tscn
-res://soundEntety.tscn
-res://scenes/Enemy.gd
+res://scripts/player.gd

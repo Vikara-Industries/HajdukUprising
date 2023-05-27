@@ -1,3 +1,4 @@
+Timer
 MeshInstance2D
 Path2D
 NavigationAgent2D
@@ -20,6 +21,5 @@ Panel
 Line2D
 CollisionPolygon2D
 AnimatedSprite2D
-Timer
 RayCast2D
 CharacterBody2D

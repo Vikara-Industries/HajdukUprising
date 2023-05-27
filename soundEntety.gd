@@ -16,8 +16,11 @@ func _physics_process(delta):
 		if body.is_in_group("Enemy"):
 			body.setTargetPos(startingPos)
 			
-	if navigation.distance_to_target()<10:
-		
-		queue_free()
+	if navigation.distance_to_target()<50:
+		destroySelf()
 func setTargetPos(pos:Vector2):
 	navigation.target_position = pos
+
+
+func destroySelf():
+	queue_free()
