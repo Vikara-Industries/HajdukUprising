@@ -33,6 +33,10 @@ func _physics_process(delta):
 		move_and_slide()
 	
 func handleAnimation():
+	if velocity.x <0:
+		sprite.scale.x = -abs(sprite.scale.x)
+	else:
+		sprite.scale.x = abs(sprite.scale.x)
 	if shooting:
 		sprite.animation = "shoot"
 	elif velocity.length() > 0.01:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c5175lt6lq5g"]
+[gd_scene load_steps=27 format=3 uid="uid://c5175lt6lq5g"]
 
 [ext_resource type="Texture2D" uid="uid://bgupnfoll1v3s" path="res://sprites/turk/Stand.png" id="1_div81"]
 [ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_tjswx"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://fooikk6o6anu" path="res://sprites/turk/Walk 5.png" id="13_gxurv"]
 [ext_resource type="Texture2D" uid="uid://4bu7c8ilylvv" path="res://sprites/turk/Walk 6.png" id="14_vumgp"]
 [ext_resource type="PackedScene" uid="uid://dtu4ayjg1u5f4" path="res://scenes/gun.tscn" id="15_4uadh"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="23_bckbi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jca07"]
 animations = [{
@@ -130,40 +131,9 @@ targetGroup = "\"Player\""
 
 [node name="Vision" type="Node2D" parent="Sprite2D"]
 
-[node name="RayCast2D" type="RayCast2D" parent="Sprite2D/Vision"]
-position = Vector2(4, -13)
-target_position = Vector2(285, -85)
-collision_mask = 257
-
-[node name="RayCast2D2" type="RayCast2D" parent="Sprite2D/Vision"]
-position = Vector2(4, -13)
-target_position = Vector2(281, 137)
-collision_mask = 257
-
-[node name="RayCast2D3" type="RayCast2D" parent="Sprite2D/Vision"]
-position = Vector2(4, -13)
-target_position = Vector2(293, 88)
-collision_mask = 257
-
-[node name="RayCast2D4" type="RayCast2D" parent="Sprite2D/Vision"]
-position = Vector2(4, -13)
-target_position = Vector2(315, 52)
-collision_mask = 257
-
-[node name="RayCast2D5" type="RayCast2D" parent="Sprite2D/Vision"]
-position = Vector2(4, -13)
-target_position = Vector2(338, 15)
-collision_mask = 257
-
-[node name="RayCast2D6" type="RayCast2D" parent="Sprite2D/Vision"]
-position = Vector2(4, -13)
-target_position = Vector2(333, -25)
-collision_mask = 257
-
-[node name="RayCast2D7" type="RayCast2D" parent="Sprite2D/Vision"]
-position = Vector2(4, -13)
-target_position = Vector2(311, -58)
-collision_mask = 257
+[node name="VisionCone2D" parent="Sprite2D/Vision" instance=ExtResource("23_bckbi")]
+debug_lines = true
+debug_shape = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Sprite2D"]
 position = Vector2(52, -12)
