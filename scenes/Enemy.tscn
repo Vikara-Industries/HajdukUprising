@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c5175lt6lq5g"]
+[gd_scene load_steps=26 format=3 uid="uid://c5175lt6lq5g"]
 
 [ext_resource type="Texture2D" uid="uid://bgupnfoll1v3s" path="res://sprites/turk/Stand.png" id="1_div81"]
 [ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_tjswx"]
@@ -112,41 +112,50 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="QuadMesh" id="QuadMesh_iu3l8"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qduvg"]
-size = Vector2(47.5, 50)
+size = Vector2(45.75, 49)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_tjswx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0.5, -0.5)
+scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_jca07")
 animation = &"aim"
 autoplay = "walk"
 
 [node name="Gun" parent="Sprite2D" instance=ExtResource("15_4uadh")]
+position = Vector2(-3, -9)
 targetGroup = "\"Player\""
 
-[node name="Vision" type="Node2D" parent="Sprite2D"]
-
-[node name="VisionCone2D" parent="Sprite2D/Vision" instance=ExtResource("23_bckbi")]
-debug_lines = true
-debug_shape = true
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Sprite2D"]
-position = Vector2(52, -12)
-scale = Vector2(65.5, 16.5)
-mesh = SubResource("QuadMesh_iu3l8")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.25, 0)
+position = Vector2(0.125, 0.5)
 shape = SubResource("RectangleShape2D_qduvg")
 
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 1000.0
+neighbor_distance = 1480.39
+debug_enabled = true
+
+[node name="Vision" type="Node2D" parent="."]
+
+[node name="VisionCone2D" parent="Vision" instance=ExtResource("23_bckbi")]
+rotation = -1.59168
+angle_deg = 90
+max_distance = 200.0
+debug_lines = true
+debug_shape = true
+
+[node name="AimTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="bodyEntered" from="Vision/VisionCone2D" to="." method="_on_vision_cone_2d_body_entered"]
+[connection signal="bodyExited" from="Vision/VisionCone2D" to="." method="_on_vision_cone_2d_body_exited"]
+[connection signal="timeout" from="AimTimer" to="." method="_on_timer_timeout"]

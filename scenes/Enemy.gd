@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const Speed = 100.0
+@export var Speed = 1.5
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var defaultPath :Path2D
 var patrolPointIndex = 0
@@ -9,63 +9,86 @@ var dead = false
 var distracted = false
 var seesPlayer = false
 var shooting = false
-
+var doneAiming = false
+@export var player : CharacterBody2D
 @onready var sprite := $Sprite2D as AnimatedSprite2D
-@onready var Vision := $Sprite2D/Vision as Node2D
+@onready var Vision := $Vision as Node2D
 @onready var DeathTimer := $DeathTimer as Timer
-@onready var sightLines = Vision.get_children()
+@onready var AimTimer := $AimTimer as Timer
 @onready var navigation :=$NavigationAgent2D as NavigationAgent2D
+@onready var gun := $Sprite2D/Gun
+
 
 func _start():
-	navigation.set_target_position(global_position)
-
+	
+	navigation.set_target_position(getNextPatrolPoint())
+	if player ==null:
+		player = get_tree().get_first_node_in_group("Player")
+	
+	seesPlayer=false
 func _physics_process(delta):
 	if not dead:
 		
-		lookForPlayer()
-		if not seesPlayer:
-			velocity = (navigation.get_next_path_position()-global_position).normalized()*Speed
-		if navigation.distance_to_target() < 9:
-			targetReached()
-		if not distracted or seesPlayer:
-			patrol()
+		chooseAction()
 		handleAnimation()
 		move_and_slide()
 	
-func handleAnimation():
-	if velocity.x <0:
-		sprite.scale.x = -abs(sprite.scale.x)
+var hasStartedPatroling = false
+func chooseAction():
+	if seesPlayer:
+		hasStartedPatroling = false
+		aimGun()
+	elif distracted:
+		hasStartedPatroling = false
+		investigate()
 	else:
-		sprite.scale.x = abs(sprite.scale.x)
-	if shooting:
-		sprite.animation = "shoot"
-	elif velocity.length() > 0.01:
-		sprite.animation = "walk"
-	elif seesPlayer:
-		sprite.animation = "aim"
-	else:
-		sprite.animation = "idle"
-func lookForPlayer():
-	for sightLine in sightLines:
-			var collider = sightLine.get_collider()
-			if(collider != null and collider.is_in_group("Player") and not get_node('../Player').IsHidden):
-				seesPlayer = true
-				
-				return
-	seesPlayer = false
+		if not hasStartedPatroling:
+			if defaultPath:
+				setTargetPos(getNextPatrolPoint())
+			hasStartedPatroling=true
+		patrol()
+		lookForPlayer()
+		
+ 
+func aimGun():
+	velocity = Vector2(0,0)
+	if doneAiming:
+		gun.fire(player.position)
+		AimTimer.stop()
+		doneAiming=false
 	
-	return
-	
-func setTargetPos(pos:Vector2):
-	distracted = true
-	navigation.set_target_position(pos)
-	
-	
+func investigate():
+	lookForPlayer()	
+	moveToTarget()
+	if targetReached():
+		distracted = false
+
 func patrol():
 	if(defaultPath):
-		if(navigation.distance_to_target()<10):
-			navigation.set_target_position(getNextPatrolPoint())
-		setTargetPos(defaultPath.curve.get_baked_points()[patrolPointIndex]) 
+		if targetReached():
+			setTargetPos(getNextPatrolPoint())
+		#setTargetPos(defaultPath.curve.get_baked_points()[patrolPointIndex])
+		moveToTarget()
+	
+func lookForPlayer():
+	Vision.look_at(Vector2(position.x+velocity.x,position.y+velocity.y))
+	
+func _on_timer_timeout():
+	doneAiming = true
+	
+
+func hearNoise(posNoise):
+	setTargetPos(posNoise)
+	distracted = true
+	
+	
+func setTargetPos(pos:Vector2):	
+	navigation.set_target_position(pos)
+	
+
+
+func moveToTarget():
+	velocity = (navigation.get_next_path_position() - position) * Speed
 	
 func getNextPatrolPoint():
 	patrolPointIndex += 1
@@ -84,6 +107,36 @@ func _on_death_timer_timeout():
 
 
 func targetReached():
-	velocity = Vector2(0,0)
-	distracted = false
+	if navigation.distance_to_target() < 9:
+		return true
+	else:
+		return false
+
+func handleAnimation():
+	if velocity.x <0:
+		sprite.scale.x = -abs(sprite.scale.x)
+	else:
+		sprite.scale.x = abs(sprite.scale.x)
+	if shooting:
+		sprite.animation = "shoot"
+	elif velocity.length() > 0.01:
+		sprite.animation = "walk"
+	elif seesPlayer:
+		sprite.animation = "aim"
+	else:
+		sprite.animation = "idle"
+
+
+var hasInitiated = false
+func _on_vision_cone_2d_body_entered():
+	if hasInitiated:
+		seesPlayer = true
+		AimTimer.start()
+	hasInitiated= true
+	
+
+
+func _on_vision_cone_2d_body_exited():
+	seesPlayer = false
+	AimTimer.stop()
 	

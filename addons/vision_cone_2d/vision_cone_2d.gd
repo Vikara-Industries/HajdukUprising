@@ -118,3 +118,13 @@ func _ray_to(direction: Vector2) -> Vector2:
 
 	var ray_position = collision["position"] if "position" in collision else destination
 	return to_local(ray_position)
+
+
+func _on_vision_cone_area_body_entered(body):
+	emit_signal("bodyEntered")
+signal bodyEntered
+
+
+func _on_vision_cone_area_body_exited(body):
+	emit_signal("bodyExited")
+signal bodyExited

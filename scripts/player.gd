@@ -66,7 +66,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("Shoot"):
 		makeSound()
 		if gunTimer.is_stopped():
-			weapon.fire()
+			weapon.fire(get_global_mouse_position())
 			gunTimer.start()
 	
 	if IsHidden:
@@ -109,3 +109,5 @@ func makeSound():
 		add_child(sound)
 		sound.setTargetPos(enemy.get_global_position())
 		
+func die():
+	print_debug('mama mia')

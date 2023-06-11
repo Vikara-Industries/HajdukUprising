@@ -20,3 +20,6 @@ monitorable = false
 
 [node name="DebugDraw" type="Node2D" parent="."]
 script = ExtResource("2_opycg")
+
+[connection signal="body_entered" from="VisionConeArea" to="." method="_on_vision_cone_area_body_entered"]
+[connection signal="body_exited" from="VisionConeArea" to="." method="_on_vision_cone_area_body_exited"]

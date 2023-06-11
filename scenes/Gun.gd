@@ -2,17 +2,16 @@ extends Node2D
 signal TimerDone
 @onready var ray := $fireLine as RayCast2D
 @export var targetGroup :String
-var target :Vector2
 
-func fire():
+func fire(target :Vector2):
 	ray.position = position
 	ray.target_position = to_local(target)
 	
 	var hit = ray.get_collider()
 	
 	if(hit != null):
-		if(hit.is_in_group(targetGroup)):
-			ray.get_collider().die()
+		if(hit.has_method("die")):
+			hit.die()
 			
 
 

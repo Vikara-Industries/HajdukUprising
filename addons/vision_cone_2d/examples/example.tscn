@@ -20,7 +20,7 @@ curve = SubResource("Curve2D_kvoug")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PatrolPath"]
 position = Vector2(81, 129)
-rotation = -0.463644
+rotation = -0.463648
 
 [node name="Enemy" parent="." instance=ExtResource("1_d5bxy")]
 position = Vector2(1055, 97)
