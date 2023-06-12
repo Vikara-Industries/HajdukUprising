@@ -107,7 +107,7 @@ func _on_death_timer_timeout():
 
 
 func targetReached():
-	if navigation.distance_to_target() < 9:
+	if navigation.distance_to_target() < 10:
 		return true
 	else:
 		return false

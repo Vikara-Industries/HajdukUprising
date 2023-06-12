@@ -113,7 +113,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qduvg"]
-size = Vector2(45.75, 49)
+size = Vector2(25.75, 24)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_tjswx")
@@ -131,16 +131,13 @@ position = Vector2(-3, -9)
 targetGroup = "\"Player\""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.125, 0.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_qduvg")
 
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
-radius = 1000.0
-neighbor_distance = 1480.39
 debug_enabled = true
 
 [node name="Vision" type="Node2D" parent="."]

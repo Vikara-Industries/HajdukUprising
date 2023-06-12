@@ -1,5 +1,5 @@
 res://scenes/Enemy.tscn
-res://sprites/bg/new_tile_set.tres
+res://ground.tres
 res://scenes/gun.tscn
 res://scenes/player.tscn
 res://scenes/test_level.tscn
@@ -7,5 +7,4 @@ res://door.tscn
 res://soundEntety.tscn
 res://addons/vision_cone_2d/vision_cone_2d_template.tscn
 res://scenes/Enemy.gd
-res://ground.tres
-res://door.gd
+res://soundEntety.gd
