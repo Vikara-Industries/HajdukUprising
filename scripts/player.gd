@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 
 @export var SPEED = 300.0
+
 @export var Left:Marker2D
 @export var Right:Marker2D
 @export var Up:Marker2D
 @export var Down:Marker2D
+
 @export var IsHidden = false
 
 @onready var camera := $Camera as Camera2D

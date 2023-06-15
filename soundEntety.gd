@@ -8,7 +8,7 @@ func _ready():
 	startingPos = global_position
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	global_position = navigation.get_next_path_position()
 	
 	for body in get_overlapping_bodies():

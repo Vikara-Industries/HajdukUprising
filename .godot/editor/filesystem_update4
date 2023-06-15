@@ -13,3 +13,9 @@ res://scenes/sprite.gd
 res://scenes/Movement.gd
 res://scripts/PatrolPath.gd
 res://scenes/Gun.gd
+res://door.gd
+res://soundEntety.gd
+res://scenes/camControll.gd
+res://scripts/player.gd
+res://scripts/room.gd
+res://scenes/room.tscn

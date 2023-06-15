@@ -4,7 +4,7 @@ extends AnimatedSprite2D
 func handleAnimation():
 	if get_parent().velocity.x <0:
 		scale.x = -abs(scale.x)
-	else:
+	elif get_parent().velocity.x >0:
 		scale.x = abs(scale.x)
 	if get_parent().shooting:
 		animation = "shoot"

@@ -14,7 +14,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	player.interact_pressed.connect(_on_player_interact_pressed)
 	
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if isPlayerInGroup(get_overlapping_bodies()):
 		emit_signal("PlayerEnteredInteract")
 
@@ -27,8 +27,8 @@ func interact():
 		player.position = targetDoor.position
 		player.camera.Left = targetDoor.get_parent().find_child("Left")
 		player.camera.Right = targetDoor.get_parent().find_child("Right")
-		player.camera.Up = targetDoor.get_parent().find_child("Top")
-		player.camera.Down = targetDoor.get_parent().find_child("Bottom")
+		player.camera.Up = targetDoor.get_parent().find_child("Up")
+		player.camera.Down = targetDoor.get_parent().find_child("Down")
 		
 		
 		player.camera.setLimits()

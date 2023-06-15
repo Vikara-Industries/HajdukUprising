@@ -1,13 +1,14 @@
+Node
+Node2D
+Marker2D
 CPUParticles2D
 Path2D
-Node
 NavigationLink2D
 CollisionShape2D
 Area2D
 NavigationObstacle2D
 CollisionPolygon2D
 NavigationRegion2D
-Marker2D
 TileMap
 StaticBody2D
 Timer
@@ -17,7 +18,6 @@ ReferenceRect
 Polygon2D
 WorldEnvironment
 Sprite2D
-Node2D
 Camera2D
 SubViewport
 Panel

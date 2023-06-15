@@ -12,8 +12,8 @@ var seesPlayer = false
 var shooting = false
 var doneAiming = false
 var action
+var defaultPatrolPath 
 
-@onready var defaultPatrolPath = PatrolPath.new(defaultPath2D.curve.get_baked_points())
 @onready var player := get_tree().get_nodes_in_group("Player")[0]
 @onready var sprite := $Sprite2D as AnimatedSprite2D
 @onready var vision := $Vision as Node2D
@@ -23,15 +23,22 @@ var action
 @onready var gun := $Sprite2D/Gun
 @onready var Ai := $AI as AI
 
+func _ready():
+	if defaultPath2D:
+		defaultPatrolPath = PatrolPath.new(defaultPath2D.curve.get_baked_points())
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not dead:
 		action = Ai.chooseAction()
 		sprite.handleAnimation()
-		setVelocity()
+		doAction()
 		move_and_slide()
 		
-
+func doAction():
+	if action == "shoot":
+		gun.fire(player.position)
+	else:
+		setVelocity()
 func setVelocity():
 	if action == "idle" or "aim":
 		velocity = Vector2(0,0)

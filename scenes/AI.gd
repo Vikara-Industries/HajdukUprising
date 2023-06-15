@@ -16,13 +16,16 @@ func _ready():
 	call_deferred("setPatrolPath")
 	
 func setPatrolPath():
-	patrolPath = get_parent().defaultPatrolPath
-	setTarget(patrolPath.getNextPatrolPoint())
-	
+	if get_parent().defaultPatrolPath != null:
+		patrolPath = get_parent().defaultPatrolPath
+		setTarget(patrolPath.getNextPatrolPoint())
+		
 func chooseAction():
 	if seesPlayer:
 		distracted = false
 		if doneAiming:
+			
+			doneAiming = false
 			return "shoot"
 		return "aim"
 	elif distracted:
@@ -56,6 +59,5 @@ func _on_aim_timer_timeout():
 
 func _on_target_reached():
 	distracted = false
-	setTarget(patrolPath.getNextPatrolPoint())
-	
-
+	if get_parent().defaultPatrolPath != null:
+		setTarget(patrolPath.getNextPatrolPoint())
