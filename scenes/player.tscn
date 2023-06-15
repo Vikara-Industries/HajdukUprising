@@ -155,7 +155,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4a3r"]
-size = Vector2(23, 24)
+size = Vector2(20.5, 24)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
@@ -175,10 +175,11 @@ animation = &"shoot"
 autoplay = "walk"
 
 [node name="Gun" parent="sprite" instance=ExtResource("31_npy5m")]
+position = Vector2(-1, -4)
 targetGroup = "\"Enemy\""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2)
+position = Vector2(-1.25, 2)
 shape = SubResource("RectangleShape2D_h4a3r")
 
 [node name="interactIndicator" type="Sprite2D" parent="."]

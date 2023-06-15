@@ -8,9 +8,29 @@ script = ExtResource("1_mjhq3")
 
 [node name="fireLine" type="RayCast2D" parent="."]
 target_position = Vector2(24, 0)
+collision_mask = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="particle1" type="CPUParticles2D" parent="."]
+emitting = false
+orbit_velocity_min = -123.08
+orbit_velocity_max = 215.38
+tangential_accel_min = -18.46
+tangential_accel_max = 18.46
+angle_min = -233.1
+angle_max = 188.3
+
+[node name="particle2" type="CPUParticles2D" parent="."]
+position = Vector2(24, 0)
+emitting = false
+orbit_velocity_min = -123.08
+orbit_velocity_max = 215.38
+tangential_accel_min = -18.46
+tangential_accel_max = 18.46
+angle_min = -233.1
+angle_max = 188.3
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

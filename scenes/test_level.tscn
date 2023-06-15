@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rhj2ytbrvr4h"]
+[gd_scene load_steps=9 format=3 uid="uid://rhj2ytbrvr4h"]
 
 [ext_resource type="PackedScene" uid="uid://cqu3elb6kjvod" path="res://scenes/player.tscn" id="1_6mdqb"]
 [ext_resource type="TileSet" uid="uid://dj104rkvxuksh" path="res://ground.tres" id="2_0s1rl"]
@@ -10,19 +10,12 @@
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qqr7f"]
 
-[sub_resource type="Curve2D" id="Curve2D_hrbxt"]
+[sub_resource type="Curve2D" id="Curve2D_fwq1v"]
 bake_interval = 512.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 662, -79, 0, 0, 0, 0, 952, -82)
+"points": PackedVector2Array(0, 0, 0, 0, 669, -129, 0, 0, 0, 0, 1195, -124)
 }
 point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_qkmev"]
-bake_interval = 512.0
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1230, -203, 0, 0, 0, 0, 1333, -199, 0, 0, 0, 0, 1558, 165, 0, 0, 0, 0, 1561, -200)
-}
-point_count = 4
 
 [node name="TestLevel" type="Node2D"]
 
@@ -72,7 +65,7 @@ targetDoor = NodePath("../../Room2/Door4")
 position = Vector2(1000, -127)
 
 [node name="Left" type="Marker2D" parent="Room1"]
-position = Vector2(499, -124)
+position = Vector2(-132, -111)
 
 [node name="Top" type="Marker2D" parent="Room1"]
 position = Vector2(748, -281)
@@ -86,8 +79,7 @@ motion_mode = 1
 defaultPath2D = NodePath("../Path2D")
 
 [node name="Path2D" type="Path2D" parent="Room1"]
-position = Vector2(-12, -85)
-curve = SubResource("Curve2D_hrbxt")
+curve = SubResource("Curve2D_fwq1v")
 
 [node name="Room2" type="Node" parent="."]
 
@@ -108,9 +100,6 @@ position = Vector2(1343, -312)
 [node name="Bottom" type="Marker2D" parent="Room2"]
 position = Vector2(1517, 271)
 
-[node name="Path2D" type="Path2D" parent="Room2"]
-curve = SubResource("Curve2D_qkmev")
-
 [node name="NavigationLink2D2" type="NavigationLink2D" parent="."]
-start_position = Vector2(1137, -145)
-end_position = Vector2(953, -127)
+start_position = Vector2(1118, -126)
+end_position = Vector2(977, -122)

@@ -4,12 +4,7 @@ class_name AI
 @onready var AimTimer := $AimTimer as Timer
 var patrolPath :PatrolPath
 
-func _ready():
-	call_deferred("setPatrolPath")
-	
-func setPatrolPath():
-	patrolPath = get_parent().defaultPatrolPath
-	
+
 var seesPlayer = false
 var doneAiming = false
 var distracted = false
@@ -17,6 +12,13 @@ var distracted = false
 var targetDesination
 
 
+func _ready():
+	call_deferred("setPatrolPath")
+	
+func setPatrolPath():
+	patrolPath = get_parent().defaultPatrolPath
+	setTarget(patrolPath.getNextPatrolPoint())
+	
 func chooseAction():
 	if seesPlayer:
 		distracted = false
@@ -29,6 +31,7 @@ func chooseAction():
 		return "moveOnPath"
 	else:
 		return "idle"
+		
 
 
 

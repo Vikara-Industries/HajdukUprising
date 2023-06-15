@@ -12,3 +12,4 @@ res://scenes/test_level.tscn
 res://scenes/sprite.gd
 res://scenes/Movement.gd
 res://scripts/PatrolPath.gd
+res://scenes/Gun.gd
