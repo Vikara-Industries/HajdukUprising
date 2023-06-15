@@ -1,14 +1,14 @@
+Node
+Path2D
+NavigationLink2D
 CollisionShape2D
 Area2D
 NavigationObstacle2D
-Path2D
 CollisionPolygon2D
 NavigationRegion2D
 Marker2D
-Node
 TileMap
 StaticBody2D
-NavigationLink2D
 Timer
 MeshInstance2D
 NavigationAgent2D

@@ -1,5 +1,5 @@
 extends Camera2D
-var minZoom = 2
+var minZoom = 2.5
 @onready var Up := get_parent().Up as Marker2D
 @onready var Down := get_parent().Down as Marker2D
 @onready var Left := get_parent().Left as Marker2D

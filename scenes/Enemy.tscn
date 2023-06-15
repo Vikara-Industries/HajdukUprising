@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c5175lt6lq5g"]
+[gd_scene load_steps=29 format=3 uid="uid://c5175lt6lq5g"]
 
 [ext_resource type="Texture2D" uid="uid://bgupnfoll1v3s" path="res://sprites/turk/Stand.png" id="1_div81"]
 [ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_tjswx"]
@@ -22,7 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://fooikk6o6anu" path="res://sprites/turk/Walk 5.png" id="13_gxurv"]
 [ext_resource type="Texture2D" uid="uid://4bu7c8ilylvv" path="res://sprites/turk/Walk 6.png" id="14_vumgp"]
 [ext_resource type="PackedScene" uid="uid://dtu4ayjg1u5f4" path="res://scenes/gun.tscn" id="15_4uadh"]
+[ext_resource type="Script" path="res://scenes/sprite.gd" id="22_8ly1d"]
 [ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="23_bckbi"]
+[ext_resource type="Script" path="res://scenes/AI.gd" id="24_lsath"]
+[ext_resource type="Script" path="res://scenes/Movement.gd" id="26_27cff"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jca07"]
 animations = [{
@@ -116,6 +119,8 @@ animations = [{
 size = Vector2(25.75, 24)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_tjswx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -125,6 +130,7 @@ scale = Vector2(1.02, 1.02)
 sprite_frames = SubResource("SpriteFrames_jca07")
 animation = &"aim"
 autoplay = "walk"
+script = ExtResource("22_8ly1d")
 
 [node name="Gun" parent="Sprite2D" instance=ExtResource("15_4uadh")]
 position = Vector2(-3, -9)
@@ -138,7 +144,10 @@ shape = SubResource("RectangleShape2D_qduvg")
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 20.0
 debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 1, 1)
 
 [node name="Vision" type="Node2D" parent="."]
 
@@ -149,10 +158,17 @@ max_distance = 200.0
 debug_lines = true
 debug_shape = true
 
-[node name="AimTimer" type="Timer" parent="."]
+[node name="AI" type="Node" parent="."]
+script = ExtResource("24_lsath")
+
+[node name="AimTimer" type="Timer" parent="AI"]
 wait_time = 2.0
 
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("26_27cff")
+
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
-[connection signal="bodyEntered" from="Vision/VisionCone2D" to="." method="_on_vision_cone_2d_body_entered"]
-[connection signal="bodyExited" from="Vision/VisionCone2D" to="." method="_on_vision_cone_2d_body_exited"]
-[connection signal="timeout" from="AimTimer" to="." method="_on_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="AI" method="_on_target_reached"]
+[connection signal="bodyEntered" from="Vision/VisionCone2D" to="AI" method="_playerEnteredVision"]
+[connection signal="bodyExited" from="Vision/VisionCone2D" to="AI" method="_playerExitedVision"]
+[connection signal="timeout" from="AI/AimTimer" to="AI" method="_on_aim_timer_timeout"]

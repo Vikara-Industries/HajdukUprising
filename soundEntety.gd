@@ -15,7 +15,7 @@ func _physics_process(delta):
 		
 		if body.is_in_group("Enemy"):
 			body.hearNoise(startingPos)
-			print_debug(startingPos)
+			
 			
 	if navigation.distance_to_target()<10:
 		destroySelf()

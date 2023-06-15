@@ -1,10 +1,14 @@
+res://addons/vision_cone_2d/vision_cone_2d.gd
 res://scenes/Enemy.tscn
 res://ground.tres
+res://scenes/AI.gd
+res://scenes/Enemy.gd
 res://scenes/gun.tscn
 res://scenes/player.tscn
-res://scenes/test_level.tscn
 res://door.tscn
 res://soundEntety.tscn
 res://addons/vision_cone_2d/vision_cone_2d_template.tscn
-res://scenes/Enemy.gd
-res://soundEntety.gd
+res://scenes/test_level.tscn
+res://scenes/sprite.gd
+res://scenes/Movement.gd
+res://scripts/PatrolPath.gd

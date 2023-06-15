@@ -121,10 +121,12 @@ func _ray_to(direction: Vector2) -> Vector2:
 
 
 func _on_vision_cone_area_body_entered(body):
-	emit_signal("bodyEntered")
+	if body == get_parent().get_parent().player:
+		emit_signal("bodyEntered")
 signal bodyEntered
 
 
 func _on_vision_cone_area_body_exited(body):
-	emit_signal("bodyExited")
+	if body == get_parent().get_parent().player:
+		emit_signal("bodyExited")
 signal bodyExited
