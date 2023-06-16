@@ -1,12 +1,13 @@
 extends Camera2D
 var minZoom = 2.5
-@onready var Up := get_parent().Up as Marker2D
-@onready var Down := get_parent().Down as Marker2D
-@onready var Left := get_parent().Left as Marker2D
-@onready var Right := get_parent().Right as Marker2D
+var Up
+var Down 
+var Left
+var Right
+
 func _ready():
-	setLimits()
-	setZoom()
+	call_deferred("setLimits")
+	call_deferred("setZoom")
 
 func setZoom():
 	#trial and error shows that 100px distance fits a zoom of ~6.5;

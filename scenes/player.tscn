@@ -99,7 +99,7 @@ animations = [{
 "texture": ExtResource("17_xc1x8")
 }],
 "loop": true,
-"name": &"death",
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -171,7 +171,7 @@ script = ExtResource("2_wykis")
 texture_filter = 1
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_0ty7n")
-animation = &"shoot"
+animation = &"die"
 autoplay = "walk"
 
 [node name="Gun" parent="sprite" instance=ExtResource("31_npy5m")]
@@ -190,4 +190,8 @@ texture = ExtResource("32_1pxfi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="TimerDone" from="sprite/Gun" to="." method="_on_gun_timer_done"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

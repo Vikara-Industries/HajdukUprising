@@ -1,3 +1,9 @@
+Timer
+Area2D
+CollisionPolygon2D
+DirectionalLight2D
+PointLight2D
+LightOccluder2D
 Node
 Node2D
 Marker2D
@@ -5,13 +11,10 @@ CPUParticles2D
 Path2D
 NavigationLink2D
 CollisionShape2D
-Area2D
 NavigationObstacle2D
-CollisionPolygon2D
 NavigationRegion2D
 TileMap
 StaticBody2D
-Timer
 MeshInstance2D
 NavigationAgent2D
 ReferenceRect

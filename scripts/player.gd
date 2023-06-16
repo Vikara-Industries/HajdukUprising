@@ -3,13 +3,10 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 
-@export var Left:Marker2D
-@export var Right:Marker2D
-@export var Up:Marker2D
-@export var Down:Marker2D
 
-@export var IsHidden = false
 
+@export var isInShadow = false
+@export var IsInCover = false
 @onready var camera := $Camera as Camera2D
 @onready var sprite := $sprite as AnimatedSprite2D
 @onready var weapon := $sprite/Gun as Node2D
@@ -17,9 +14,10 @@ extends CharacterBody2D
 @onready var gunTimer := $sprite/Gun/Timer as Timer
 @onready var interactIndicator := $interactIndicator as Sprite2D
 @onready var navigation := $NavigationAgent2D as NavigationAgent2D
+@onready var DeathTimer := $DeathTimer as Timer
 
 var _animState = "idle"
-
+var dead = false
 
 signal interact_pressed
 
@@ -34,49 +32,55 @@ func _ready():
 		interactable.PlayerEnteredInteract.connect(ShowInteract)
 		interactable.PlayerLeftInteract.connect(HideInteract)
 	
+	camera.Up = get_parent().get_node("Up") as Marker2D
+	camera.Down = get_parent().get_node("Down") as Marker2D
+	camera.Left = get_parent().get_node("Left") as Marker2D
+	camera.Right = get_parent().get_node("Right") as Marker2D
+	
+	
 	
 	
 func _physics_process(_delta):
 
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var directionX = Input.get_axis("Left", "Right")
-	var directionY = Input.get_axis("Up","Down")
-	if directionX or directionY:
-		
-		velocity.y = directionY * SPEED
-		velocity.x = directionX * SPEED
-		if(directionX<0):
+	if not dead:
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var directionX = Input.get_axis("Left", "Right")
+		var directionY = Input.get_axis("Up","Down")
+		if directionX or directionY:
 			
-			sprite.scale.x = -abs(sprite.scale.x)
-			hitBox.position.x = abs(hitBox.position.x)
+			velocity.y = directionY * SPEED
+			velocity.x = directionX * SPEED
+			if(directionX<0):
+				
+				sprite.scale.x = -abs(sprite.scale.x)
+				hitBox.position.x = abs(hitBox.position.x)
+			else:
+				sprite.scale.x = abs(sprite.scale.x)
+				hitBox.position.x = -abs(hitBox.position.x)
+			_animState = "walk"
 		else:
-			sprite.scale.x = abs(sprite.scale.x)
-			hitBox.position.x = -abs(hitBox.position.x)
-		_animState = "walk"
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		if Input.is_action_pressed("Aim"):
-			_animState = "aim"
-		else:
-			_animState = "idle"
-	if Input.is_action_just_pressed("Interact"):
-		try_interact()
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+			if Input.is_action_pressed("Aim"):
+				_animState = "aim"
+			else:
+				_animState = "idle"
+		if Input.is_action_just_pressed("Interact"):
+			try_interact()
+			
+		if Input.is_action_just_pressed("Shoot"):
+			makeSound()
+			if gunTimer.is_stopped():
+				weapon.fire(get_global_mouse_position())
+				gunTimer.start()
 		
-	if Input.is_action_just_pressed("Shoot"):
-		makeSound()
-		if gunTimer.is_stopped():
-			weapon.fire(get_global_mouse_position())
-			gunTimer.start()
-	
-	if IsHidden:
-		_animState = "hide"
-		
-	checkNavigation()
-	_handleAnim(_animState)
-	move_and_slide()
+		if IsInCover:
+			_animState = "hide"
+			
+		checkNavigation()
+		_handleAnim(_animState)
+		move_and_slide()
 
 func checkNavigation():
 	navigation.target_position = self.position + velocity/5
@@ -89,11 +93,11 @@ func _handleAnim(state):
 		sprite.animation = "shoot"
 	
 func hideInCover():
-	IsHidden = true
+	IsInCover = true
 	self.set_collision_layer_value(1,0)
 	self.set_collision_mask_value(1,0)
 func comeOutOfCover():
-	IsHidden = false
+	IsInCover = false
 	self.set_collision_layer_value(1,1)
 	self.set_collision_mask_value(1,1)
 	
@@ -112,4 +116,10 @@ func makeSound():
 		sound.setTargetPos(enemy.get_global_position())
 		
 func die():
-	print_debug('mama mia')
+	dead = true
+	sprite.animation = "die"
+	DeathTimer.start()
+
+
+func _on_death_timer_timeout():
+	dead = false

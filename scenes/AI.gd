@@ -39,11 +39,15 @@ func chooseAction():
 
 
 func _playerEnteredVision():
-	seesPlayer = true
+	if not get_parent().player.isInShadow:
+		seesPlayer = true
 	AimTimer.start()
 
 func _playerExitedVision():
 	seesPlayer = false
+	if not get_parent().player.isInShadow:
+		hearNoise(get_parent().player.position)
+	
 	AimTimer.stop()
 
 func hearNoise(posNoise):

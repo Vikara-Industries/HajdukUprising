@@ -19,3 +19,4 @@ res://scenes/camControll.gd
 res://scripts/player.gd
 res://scripts/room.gd
 res://scenes/room.tscn
+res://scripts/shadow.gd
