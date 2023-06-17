@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtu4ayjg1u5f4"]
+[gd_scene load_steps=3 format=3 uid="uid://dtu4ayjg1u5f4"]
 
 [ext_resource type="Script" path="res://scenes/Gun.gd" id="1_mjhq3"]
+[ext_resource type="AudioStream" uid="uid://hst2wfqtfs1e" path="res://sounds/9mm-pistol-shot-6349.mp3" id="2_8ugcd"]
 
 [node name="Gun" type="Node2D"]
 position = Vector2(5, -5)
@@ -11,7 +12,7 @@ target_position = Vector2(24, 0)
 collision_mask = 3
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
 
 [node name="particle1" type="CPUParticles2D" parent="."]
@@ -32,5 +33,8 @@ tangential_accel_min = -18.46
 tangential_accel_max = 18.46
 angle_min = -233.1
 angle_max = 188.3
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_8ugcd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

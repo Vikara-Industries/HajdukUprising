@@ -16,8 +16,9 @@ extends CharacterBody2D
 @onready var navigation := $NavigationAgent2D as NavigationAgent2D
 @onready var DeathTimer := $DeathTimer as Timer
 
-var _animState = "idle"
+var aiming = false
 var dead = false
+var shooting = false
 
 signal interact_pressed
 
@@ -43,29 +44,20 @@ func _ready():
 func _physics_process(_delta):
 
 	if not dead:
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
 		var directionX = Input.get_axis("Left", "Right")
 		var directionY = Input.get_axis("Up","Down")
+		
 		if directionX or directionY:
 			
 			velocity.y = directionY * SPEED
 			velocity.x = directionX * SPEED
-			if(directionX<0):
-				
-				sprite.scale.x = -abs(sprite.scale.x)
-				hitBox.position.x = abs(hitBox.position.x)
-			else:
-				sprite.scale.x = abs(sprite.scale.x)
-				hitBox.position.x = -abs(hitBox.position.x)
-			_animState = "walk"
+			
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 			if Input.is_action_pressed("Aim"):
-				_animState = "aim"
-			else:
-				_animState = "idle"
+				aiming = true
+			
 		if Input.is_action_just_pressed("Interact"):
 			try_interact()
 			
@@ -73,25 +65,17 @@ func _physics_process(_delta):
 			makeSound()
 			if gunTimer.is_stopped():
 				weapon.fire(get_global_mouse_position())
-				gunTimer.start()
-		
-		if IsInCover:
-			_animState = "hide"
+				shooting = true
 			
 		checkNavigation()
-		_handleAnim(_animState)
+		sprite.handleAnimation()
 		move_and_slide()
 
 func checkNavigation():
 	navigation.target_position = self.position + velocity/5
 	if not navigation.is_target_reachable():
 		velocity = Vector2(0,0)
-func _handleAnim(state):
-	if gunTimer.is_stopped():
-		sprite.animation = state
-	else:
-		sprite.animation = "shoot"
-	
+
 func hideInCover():
 	IsInCover = true
 	self.set_collision_layer_value(1,0)
@@ -100,9 +84,6 @@ func comeOutOfCover():
 	IsInCover = false
 	self.set_collision_layer_value(1,1)
 	self.set_collision_mask_value(1,1)
-	
-func _on_gun_timer_done():
-	sprite.sprite_frames.set("shoot",0)
 
 func ShowInteract():
 	interactIndicator.visible = true
@@ -123,3 +104,8 @@ func die():
 
 func _on_death_timer_timeout():
 	dead = false
+
+
+func _on_sprite_animation_finished():
+	if shooting:
+		shooting = false

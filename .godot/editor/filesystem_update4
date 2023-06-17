@@ -20,3 +20,6 @@ res://scripts/player.gd
 res://scripts/room.gd
 res://scenes/room.tscn
 res://scripts/shadow.gd
+res://scenes/Playersprite.gd
+res://default_bus_layout.tres
+res://sounds/gunshot.tres

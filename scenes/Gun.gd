@@ -9,7 +9,7 @@ var hit
 
 
 func fire(target :Vector2):
-
+	$sound.play()
 	ray.enabled = true
 	ray.position = position
 	ray.target_position = to_local(target)
@@ -39,6 +39,8 @@ func setParticles():
 func enableSparks():
 	startSpark.emitting = true
 	endSpark.emitting = true
+
 func disableSparks():
 	startSpark.emitting = false
 	endSpark.emitting = false
+
