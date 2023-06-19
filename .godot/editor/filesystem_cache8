@@ -1,15 +1,15 @@
 2a60927148abd1d33b818b535e306557
-::res://::1687055908
+::res://::1687196559
+default_bus_layout.tres::AudioBusLayout::3727697229598486571::1687026516::0::1::::<><>::
 door.gd::GDScript::-1::1686861276::0::1::::Door<>Interactable<>::
 door.tscn::PackedScene::7478464158785435965::1686843119::0::1::::<><>::res://door.gd<>uid://khjpbhekvt4l
 export_presets.cfg::TextFile::-1::1683137097::0::1::::<><>::
 floorlevel.tscn::PackedScene::5302530395722132061::1684410795::0::1::::<><>::
-ground.tres::TileSet::7846206087600226883::1686869245::0::1::::<><>::uid://du2pdjnk20phk<>uid://bbi2h6ji6lcgo
+ground.tres::TileSet::7846206087600226883::1687195727::0::1::::<><>::uid://du2pdjnk20phk<>uid://bbi2h6ji6lcgo
 hidehole.tscn::PackedScene::4938639748080457048::1684410796::0::1::::<><>::res://scenes/HidingSpot.gd
 icon.svg::CompressedTexture2D::1700597756950417572::1680718894::1680718901::1::::<><>::
-default_bus_layout.tres::AudioBusLayout::3727697229598486571::1687026516::0::1::::<><>::
 soundEntety.gd::GDScript::-1::1686854798::0::1::::<>Area2D<>::
-soundEntety.tscn::PackedScene::6006623812562847733::1687055908::0::1::::<><>::res://soundEntety.gd
+soundEntety.tscn::PackedScene::6006623812562847733::1687196479::0::1::::<><>::res://soundEntety.gd
 TX Tileset Stone Ground.png::CompressedTexture2D::8619693728756820652::1605366248::1685982467::1::::<><>::
 TX Tileset Wall.png::CompressedTexture2D::2474778051258079338::1611408779::1685983497::1::::<><>::
 walls.tres::TileSet::2547829703372722080::1685983513::0::1::::<><>::
@@ -28,37 +28,38 @@ enemy.tscn::PackedScene::3814154241619058624::1685800430::0::1::::<><>::uid://kf
 example.tscn::PackedScene::5204717988226123136::1685800430::0::1::::<><>::uid://bulute7i5ksyy<>uid://hm3o2foxwd2m<>res://addons/vision_cone_2d/examples/player_movement.gd
 player_movement.gd::GDScript::-1::1685601114::0::1::::<>CharacterBody2D<>::
 wall.tscn::PackedScene::517820941949250254::1685601114::0::1::::<><>::
-::res://scenes/::1687055908
+::res://scenes/::1687196538
+AI.gd::GDScript::-1::1687055239::0::1::::AI<>Node<>::
 camControll.gd::GDScript::-1::1686871781::0::1::::<>Camera2D<>::
 cameraController.gd::GDScript::-1::1681067768::0::1::::<>Node<>::
 Door.gd::GDScript::-1::1683754668::0::1::::Interactable<>Area2D<>::
 Enemy.gd::GDScript::-1::1686863216::0::1::::<>CharacterBody2D<>::
-Enemy.tscn::PackedScene::203946400713247018::1687055907::0::1::::<><>::uid://bgupnfoll1v3s<>res://scenes/Enemy.gd<>uid://c8f8ao23evrbb<>uid://bowx13vxkfl7w<>uid://chytudnd4wlrp<>uid://bf70ws333n6ju<>uid://g4vpd35tsitu<>uid://00d7lqku4q1r<>uid://cq6r7sy5muwe6<>uid://btx6gw8avql3a<>uid://dru43cflkm2na<>uid://1bhrbki755ek<>uid://5yvw2hdpwi0s<>uid://cdt3uph3sdg4p<>uid://dcdwfhqnungxa<>uid://wvsakgixcel6<>uid://cjj7qun65agwe<>uid://c27ey277hk1yi<>uid://b1potvlpbl6f0<>uid://fooikk6o6anu<>uid://4bu7c8ilylvv<>uid://dtu4ayjg1u5f4<>res://scenes/sprite.gd<>uid://kf8tqdlm8c5t<>res://scenes/AI.gd<>res://scenes/Movement.gd<>res://scenes/Sound.gd<>uid://thp15mbjil0h<>uid://oecknav0hlax
+Enemy.tscn::PackedScene::203946400713247018::1687196479::0::1::::<><>::uid://bgupnfoll1v3s<>res://scenes/Enemy.gd<>uid://c8f8ao23evrbb<>uid://bowx13vxkfl7w<>uid://chytudnd4wlrp<>uid://bf70ws333n6ju<>uid://g4vpd35tsitu<>uid://00d7lqku4q1r<>uid://cq6r7sy5muwe6<>uid://btx6gw8avql3a<>uid://dru43cflkm2na<>uid://1bhrbki755ek<>uid://5yvw2hdpwi0s<>uid://cdt3uph3sdg4p<>uid://dcdwfhqnungxa<>uid://wvsakgixcel6<>uid://cjj7qun65agwe<>uid://c27ey277hk1yi<>uid://b1potvlpbl6f0<>uid://fooikk6o6anu<>uid://4bu7c8ilylvv<>uid://dtu4ayjg1u5f4<>res://scenes/sprite.gd<>uid://kf8tqdlm8c5t<>res://scenes/AI.gd<>res://scenes/Movement.gd<>res://scenes/Sound.gd<>uid://thp15mbjil0h<>uid://oecknav0hlax
 Gun.gd::GDScript::-1::1687025882::0::1::::<>Node2D<>::
-gun.tscn::PackedScene::8535899702845162879::1687055908::0::1::::<><>::res://scenes/Gun.gd<>uid://hst2wfqtfs1e
+gun.tscn::PackedScene::8535899702845162879::1687196479::0::1::::<><>::res://scenes/Gun.gd<>uid://hst2wfqtfs1e
 HidingSpot.gd::GDScript::-1::1683240565::0::1::::<>Area2D<>::
 Interactable.gd::GDScript::-1::1684655823::0::1::::Interactable<>Area2D<>::
-player.tscn::PackedScene::5938858220372892347::1687055908::0::1::::<><>::res://scripts/player.gd<>uid://c6e124cf3t57r<>uid://cissrjm36oj7n<>res://scenes/camControll.gd<>uid://dwvjdctqwounc<>uid://taomoaj0dlgc<>uid://couxl7s25lejb<>uid://32ts8u0l6xoa<>uid://8uxlf6k3odo6<>uid://d17v3tw57ey47<>uid://cu0jos1indl85<>uid://cp4j8cdb3s6wo<>uid://dghgn3ujdvxg8<>uid://dadvr6447sgjb<>uid://bl7ur1aceqkpd<>uid://dy4svqonny1oy<>uid://bix2sv71hp0eg<>uid://ietror15k7r5<>uid://dlwf5g4yeekip<>uid://b21xe57wtg6bm<>uid://cq0s8qcplfuec<>uid://dh1b2hr10fekv<>uid://b0sog548pwgtw<>uid://73fs8m6hveth<>uid://kcpqyvbrwv63<>uid://cgqvudgbm0u7g<>uid://bclpkgleohij<>uid://dpd04b5el5wl3<>uid://clyrbbun7oi13<>uid://qdv4v0axln6f<>uid://d4bsleyle0jcq<>uid://dtu4ayjg1u5f4<>uid://d3qhtgf37j60o<>res://scenes/Playersprite.gd
-AI.gd::GDScript::-1::1687055239::0::1::::AI<>Node<>::
 Movement.gd::GDScript::-1::1686842011::0::1::::<>Node<>::
+player.tscn::PackedScene::5462860696889386750::1687196538::0::1::::<><>::res://scripts/player.gd<>uid://c6e124cf3t57r<>uid://cissrjm36oj7n<>res://scenes/camControll.gd<>uid://dwvjdctqwounc<>uid://taomoaj0dlgc<>uid://couxl7s25lejb<>uid://32ts8u0l6xoa<>uid://8uxlf6k3odo6<>uid://d17v3tw57ey47<>uid://cu0jos1indl85<>uid://cp4j8cdb3s6wo<>uid://dghgn3ujdvxg8<>uid://dadvr6447sgjb<>uid://bl7ur1aceqkpd<>uid://dy4svqonny1oy<>uid://bix2sv71hp0eg<>uid://ietror15k7r5<>uid://dlwf5g4yeekip<>uid://b21xe57wtg6bm<>uid://cq0s8qcplfuec<>uid://dh1b2hr10fekv<>uid://b0sog548pwgtw<>uid://73fs8m6hveth<>uid://kcpqyvbrwv63<>uid://cgqvudgbm0u7g<>uid://bclpkgleohij<>uid://dpd04b5el5wl3<>uid://clyrbbun7oi13<>uid://qdv4v0axln6f<>uid://d4bsleyle0jcq<>uid://dtu4ayjg1u5f4<>res://scenes/Playersprite.gd<>res://scenes/playerSound.gd<>uid://56dqskisgicn
+playerSound.gd::GDScript::-1::1687196463::0::1::::<>Node2D<>::
 Playersprite.gd::GDScript::-1::1686922844::0::1::::<>AnimatedSprite2D<>::
+room.tscn::PackedScene::7105967586899196274::1687196479::0::1::::<><>::res://scripts/room.gd
 Sound.gd::GDScript::-1::1687055905::0::1::::<>Node2D<>::
-room.tscn::PackedScene::7105967586899196274::1687055908::0::1::::<><>::res://scripts/room.gd
 sprite.gd::GDScript::-1::1686854588::0::1::::<>AnimatedSprite2D<>::
 target.gd::GDScript::-1::1684411154::0::1::::<>WorldEnvironment<>::
-test_level.tscn::PackedScene::1208256945475985853::1687055908::0::1::::<><>::uid://cqu3elb6kjvod<>uid://dj104rkvxuksh<>res://scripts/room.gd<>uid://desvhhfrlxp3b<>uid://c5175lt6lq5g<>uid://dj801it7x0xsy<>res://scripts/shadow.gd
-::res://scripts/::1686951047
-player.gd::GDScript::-1::1686951047::0::1::::<>CharacterBody2D<>::
+test_level.tscn::PackedScene::1208256945475985853::1687196479::0::1::::<><>::uid://cqu3elb6kjvod<>uid://dj104rkvxuksh<>res://scripts/room.gd<>uid://desvhhfrlxp3b<>uid://c5175lt6lq5g<>uid://dj801it7x0xsy<>res://scripts/shadow.gd
+::res://scripts/::1687196477
 PatrolPath.gd::GDScript::-1::1686846051::0::1::::PatrolPath<>Node<>::
-shadow.gd::GDScript::-1::1686873767::0::1::::<>Area2D<>::
+player.gd::GDScript::-1::1687196477::0::1::::<>CharacterBody2D<>::
 room.gd::GDScript::-1::1686872978::0::1::::<>Node<>::
-::res://sounds/::1687056110
+shadow.gd::GDScript::-1::1686873767::0::1::::<>Area2D<>::
+::res://sounds/::1687056120
 9mm-pistol-shot-6349.mp3::AudioStreamMP3::529683708327598296::1687025410::1687025455::1::::<><>::
 enemy-boat-spotted-low-105571.mp3::AudioStreamMP3::991041297664666411::1687053426::1687053435::1::::<><>::
 footsteps-boots-101657.mp3::AudioStreamMP3::2169872704453731649::1687056099::1687056120::1::::<><>::
 glee-tank-105713.mp3::AudioStreamMP3::1348997453230005749::1687053036::1687053063::1::::<><>::
 gunshot.tres::AudioStream::9221600756854971381::1687027381::0::1::::<><>::
-::res://sprites/::1686499367
+::res://sprites/::1687196559
 invis.png::CompressedTexture2D::2506773048608474631::1641607923::1680718997::1::::<><>::
 ::res://sprites/bg/::1686499364
 Full Level.png::CompressedTexture2D::3370217883171850061::1641510510::1680718997::1::::<><>::
@@ -93,12 +94,12 @@ Walk 3.png::CompressedTexture2D::706957812552758062::1641655260::1680718997::1::
 Walk 4.png::CompressedTexture2D::75012807983178053::1641655260::1680718997::1::::<><>::
 Walk 5.png::CompressedTexture2D::8219857650819500810::1641655260::1680718997::1::::<><>::
 Walk 6.png::CompressedTexture2D::9197915691613886944::1641655260::1680718997::1::::<><>::
-::res://sprites/interactables/::1686499367
+::res://sprites/interactables/::1687196559
 doorDefult.tres::CompressedTexture2DArray::167724757314900334::1683760893::0::1::::<><>::
 Hide.png::CompressedTexture2D::6524330137990246240::1641552766::1680718997::1::::<><>::
 Portal.png::CompressedTexture2D::716912384035148345::1641608750::1680718997::1::::<><>::
 PortalFrame.png::CompressedTexture2D::7860650916190020304::1683754257::1683754257::1::::<><>::
-prompt.png::CompressedTexture2D::9158038990222192612::1641552835::1680718997::1::::<><>::
+prompt.png::CompressedTexture2D::9158038990222192612::1641552835::1687196559::1::::<><>::
 ::res://sprites/interactables/Ammo/::1686499367
 Position 1.png::CompressedTexture2D::6558871063860377917::1641487205::1680718997::1::::<><>::
 Position 2.png::CompressedTexture2D::915554945322814774::1641487205::1680718997::1::::<><>::
@@ -113,7 +114,7 @@ Position 3.png::CompressedTexture2D::2657344425278363089::1641487205::1680718997
 Position 4.png::CompressedTexture2D::5129063291841870000::1641487205::1680718997::1::::<><>::
 Position 5.png::CompressedTexture2D::5030240402391840255::1641487205::1680718997::1::::<><>::
 Position 6.png::CompressedTexture2D::7011972027384345505::1641487205::1680718997::1::::<><>::
-::res://sprites/turk/::1686499368
+::res://sprites/turk/::1687196538
 Aim.png::CompressedTexture2D::7101399535287866511::1641487205::1680718997::1::::<><>::
 Death 1.png::CompressedTexture2D::3415925230843310698::1641668808::1680718997::1::::<><>::
 Death 2.png::CompressedTexture2D::5314897855518970013::1641668808::1680718997::1::::<><>::

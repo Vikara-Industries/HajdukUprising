@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cqu3elb6kjvod"]
+[gd_scene load_steps=38 format=3 uid="uid://cj3irujspo0by"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1lw2h"]
 [ext_resource type="Texture2D" uid="uid://c6e124cf3t57r" path="res://sprites/hajduk/Aim.png" id="1_h7hhl"]
@@ -32,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://qdv4v0axln6f" path="res://sprites/hajduk/Shoot 5.png" id="24_mv1je"]
 [ext_resource type="Texture2D" uid="uid://d4bsleyle0jcq" path="res://sprites/hajduk/Walk 6.png" id="24_rstvc"]
 [ext_resource type="PackedScene" uid="uid://dtu4ayjg1u5f4" path="res://scenes/gun.tscn" id="31_npy5m"]
-[ext_resource type="Texture2D" uid="uid://d3qhtgf37j60o" path="res://sprites/interactables/prompt.png" id="32_1pxfi"]
 [ext_resource type="Script" path="res://scenes/Playersprite.gd" id="32_75s14"]
 [ext_resource type="Script" path="res://scenes/playerSound.gd" id="35_tnfst"]
 [ext_resource type="AudioStream" uid="uid://56dqskisgicn" path="res://sounds/footsteps-boots-101657.mp3" id="36_gn5b1"]
@@ -189,7 +188,6 @@ shape = SubResource("RectangleShape2D_h4a3r")
 visible = false
 position = Vector2(-1, -48)
 scale = Vector2(0.54, 0.54)
-texture = ExtResource("32_1pxfi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -206,7 +204,8 @@ script = ExtResource("35_tnfst")
 [node name="running" type="AudioStreamPlayer2D" parent="sound"]
 stream = ExtResource("36_gn5b1")
 
-[connection signal="_running" from="." to="sound" method="_on_player__running"]
+[connection signal="started_running" from="." to="sound" method="_on_player_started_running"]
+[connection signal="stopped_running" from="." to="sound" method="_on_player_stopped_running"]
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
-[connection signal="finished" from="sound/running" to="sound" method="_on_running_finished"]
+[connection signal="finished" from="sound/running" to="sound" method="_on_player_started_running"]

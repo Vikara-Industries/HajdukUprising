@@ -5,10 +5,12 @@ extends Node2D
 
 
 
-func _on_player__running():
+func _on_player_started_running():
 	running.play()
+	get_parent().makeSound()
 
 
-func _on_running_finished():
-	if get_parent().velocity.length() >= 150:
-		running.play()
+func _on_player_stopped_running():
+	running.stop()
+
+

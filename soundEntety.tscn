@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://crtwhmn2lqqg0"]
+[gd_scene load_steps=4 format=3 uid="uid://crtwhmn2lqqg0"]
 
 [ext_resource type="Script" path="res://soundEntety.gd" id="1_sp08o"]
+[ext_resource type="Texture2D" uid="uid://d3qhtgf37j60o" path="res://sprites/interactables/prompt.png" id="2_2ffkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_us40f"]
 size = Vector2(36, 32)
@@ -18,5 +19,12 @@ shape = SubResource("RectangleShape2D_us40f")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(5.34058e-07, 0.499999)
+rotation = -3.13498
+scale = Vector2(0.36, 0.34)
+texture = ExtResource("2_2ffkt")
 
 [connection signal="timeout" from="Timer" to="." method="destroySelf"]

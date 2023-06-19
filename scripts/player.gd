@@ -22,8 +22,11 @@ var shooting = false
 var running = false
 var running_mod = 1.5
 var running_velocity = SPEED * running_mod
+var previousVelocity = 0
+
 signal interact_pressed
-signal _running
+signal started_running
+signal stopped_running
 
 func try_interact():
 	if(interactIndicator.visible):
@@ -55,13 +58,20 @@ func _physics_process(_delta):
 			velocity = Vector2(directionX, directionY) * SPEED
 			if running:
 				velocity = Vector2(directionX, directionY) * SPEED *running_mod
-				
+				velocity = velocity.limit_length(running_velocity)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 			if Input.is_action_pressed("Aim"):
 				aiming = true
-			
+				
+		if velocity.length() != previousVelocity:
+			if velocity.length() >= running_velocity:
+				print(velocity.length())
+				emit_signal("started_running")
+			else:
+				emit_signal("stopped_running")
+			previousVelocity = velocity.length() 
 		if Input.is_action_just_pressed("Interact"):
 			try_interact()
 			
@@ -108,9 +118,6 @@ func die():
 
 func _on_death_timer_timeout():
 	dead = false
-func _unhandled_key_input(event):
-	if event.is_action_pressed("Run"):
-		emit_signal("_running")
 
 func _on_sprite_animation_finished():
 	if shooting:
