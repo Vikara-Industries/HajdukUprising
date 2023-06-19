@@ -23,3 +23,5 @@ res://scripts/shadow.gd
 res://scenes/Playersprite.gd
 res://default_bus_layout.tres
 res://sounds/gunshot.tres
+res://scenes/Sound.gd
+res://scenes/playerSound.gd

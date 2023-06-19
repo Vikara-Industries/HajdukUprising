@@ -75,7 +75,6 @@ rotation = -0.0159776
 collision_layer = 1
 collision_mask = 1
 motion_mode = 1
-SPEED = 100.0
 
 [node name="Door" parent="Room1" instance=ExtResource("4_uqsxf")]
 position = Vector2(515, -116)

@@ -36,5 +36,7 @@ angle_max = 188.3
 
 [node name="sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_8ugcd")
+volume_db = -4.787
+panning_strength = 2.03
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

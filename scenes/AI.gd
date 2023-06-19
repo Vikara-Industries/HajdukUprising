@@ -4,10 +4,11 @@ class_name AI
 @onready var AimTimer := $AimTimer as Timer
 var patrolPath :PatrolPath
 
-
 var seesPlayer = false
 var doneAiming = false
 var distracted = false
+signal _distracted
+signal _spotted_player
 
 var targetDesination
 
@@ -39,8 +40,9 @@ func chooseAction():
 
 
 func _playerEnteredVision():
-	if not get_parent().player.isInShadow:
+	if not get_parent().player.isInShadow or get_parent().player.velocity.length() >3:
 		seesPlayer = true
+		emit_signal("_spotted_player")
 	AimTimer.start()
 
 func _playerExitedVision():
@@ -53,6 +55,7 @@ func _playerExitedVision():
 func hearNoise(posNoise):
 	distracted = true
 	setTarget(posNoise)
+	emit_signal("_distracted")
 
 func setTarget(posTarget :Vector2):
 	get_parent().setTarget(posTarget)

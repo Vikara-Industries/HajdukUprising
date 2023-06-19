@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 300.0
+@export var SPEED = 100.0
 
 
 
@@ -19,9 +19,11 @@ extends CharacterBody2D
 var aiming = false
 var dead = false
 var shooting = false
-
+var running = false
+var running_mod = 1.5
+var running_velocity = SPEED * running_mod
 signal interact_pressed
-
+signal _running
 
 func try_interact():
 	if(interactIndicator.visible):
@@ -46,12 +48,14 @@ func _physics_process(_delta):
 	if not dead:
 		var directionX = Input.get_axis("Left", "Right")
 		var directionY = Input.get_axis("Up","Down")
+		var running = Input.is_action_pressed("Run")
 		
 		if directionX or directionY:
 			
-			velocity.y = directionY * SPEED
-			velocity.x = directionX * SPEED
-			
+			velocity = Vector2(directionX, directionY) * SPEED
+			if running:
+				velocity = Vector2(directionX, directionY) * SPEED *running_mod
+				
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.y = move_toward(velocity.y, 0, SPEED)
@@ -104,7 +108,9 @@ func die():
 
 func _on_death_timer_timeout():
 	dead = false
-
+func _unhandled_key_input(event):
+	if event.is_action_pressed("Run"):
+		emit_signal("_running")
 
 func _on_sprite_animation_finished():
 	if shooting:

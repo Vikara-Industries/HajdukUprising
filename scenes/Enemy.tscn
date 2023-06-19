@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c5175lt6lq5g"]
+[gd_scene load_steps=32 format=3 uid="uid://c5175lt6lq5g"]
 
 [ext_resource type="Texture2D" uid="uid://bgupnfoll1v3s" path="res://sprites/turk/Stand.png" id="1_div81"]
 [ext_resource type="Script" path="res://scenes/Enemy.gd" id="1_tjswx"]
@@ -26,6 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="23_bckbi"]
 [ext_resource type="Script" path="res://scenes/AI.gd" id="24_lsath"]
 [ext_resource type="Script" path="res://scenes/Movement.gd" id="26_27cff"]
+[ext_resource type="Script" path="res://scenes/Sound.gd" id="27_0gcq4"]
+[ext_resource type="AudioStream" uid="uid://thp15mbjil0h" path="res://sounds/glee-tank-105713.mp3" id="27_qp42d"]
+[ext_resource type="AudioStream" uid="uid://oecknav0hlax" path="res://sounds/enemy-boat-spotted-low-105571.mp3" id="29_jwah0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jca07"]
 animations = [{
@@ -168,8 +171,20 @@ wait_time = 2.0
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("26_27cff")
 
+[node name="Sound" type="Node2D" parent="."]
+script = ExtResource("27_0gcq4")
+
+[node name="distracted" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("27_qp42d")
+volume_db = -2.552
+
+[node name="spotted" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("29_jwah0")
+
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="target_reached" from="NavigationAgent2D" to="AI" method="_on_target_reached"]
 [connection signal="bodyEntered" from="Vision/VisionCone2D" to="AI" method="_playerEnteredVision"]
 [connection signal="bodyExited" from="Vision/VisionCone2D" to="AI" method="_playerExitedVision"]
+[connection signal="_distracted" from="AI" to="Sound" method="_on_ai__distracted"]
+[connection signal="_spotted_player" from="AI" to="Sound" method="_on_ai__spotted_player"]
 [connection signal="timeout" from="AI/AimTimer" to="AI" method="_on_aim_timer_timeout"]

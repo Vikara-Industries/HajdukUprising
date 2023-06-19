@@ -1,15 +1,15 @@
-AudioListener2D
+Timer
 AudioStreamPlayer2D
+Node2D
+Node
+AudioListener2D
 AudioStreamPlayer
 Path2D
-Node
 PointLight2D
 LightOccluder2D
-Timer
 Area2D
 CollisionPolygon2D
 DirectionalLight2D
-Node2D
 Marker2D
 CPUParticles2D
 NavigationLink2D
@@ -30,4 +30,3 @@ Panel
 Line2D
 AnimatedSprite2D
 RayCast2D
-CharacterBody2D
